@@ -201,6 +201,10 @@ var _default = {
 
     //是否需要下方小白点
     needDot: {
+      default: true },
+
+    //控制是否允许滚动
+    canScroll: {
       default: true } },
 
 

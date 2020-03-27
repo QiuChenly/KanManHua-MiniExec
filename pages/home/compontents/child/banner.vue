@@ -8,7 +8,7 @@
 		<swiper previous-margin="50rpx" next-margin="50rpx" circular="true" @change="itemchange" :style="{
 			'height': height+'px',
 		}"
-		 :autoplay="true" :interval="animalInterval" :duration="animalDuration">
+		 :autoplay="canScroll" :interval="animalInterval" :duration="animalDuration">
 			<swiper-item @click="itemclick(item.itemData)" v-for="(item,index) in list" :key='index' class="item" :class="[index == currentindex ? 'currently' : 'precurrently']">
 				<image class="item-image" mode="aspectFill" :src="item.imageUrl"></image>
 
@@ -83,6 +83,10 @@
 			},
 			//是否需要下方小白点
 			needDot: {
+				default: true
+			},
+			//控制是否允许滚动
+			canScroll: {
 				default: true
 			}
 		},

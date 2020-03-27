@@ -146,6 +146,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _api = __webpack_require__(/*! ../../../js/api.js */ 49); //
 //
 //
@@ -159,12 +160,16 @@ var _api = __webpack_require__(/*! ../../../js/api.js */ 49); //
 //
 //
 //
-var banner = function banner() {return __webpack_require__.e(/*! import() | pages/home/compontents/child/banner */ "pages/home/compontents/child/banner").then(__webpack_require__.bind(null, /*! ./child/banner.vue */ 124));};var comicmore = function comicmore() {return __webpack_require__.e(/*! import() | pages/comicDetails/compontents/comicmore */ "pages/comicDetails/compontents/comicmore").then(__webpack_require__.bind(null, /*! ../../comicDetails/compontents/comicmore.vue */ 117));};var _default = { components: { banner: banner, comicmore: comicmore }, props: [],
-  data: function data() {
+//
+var banner = function banner() {return __webpack_require__.e(/*! import() | pages/home/compontents/child/banner */ "pages/home/compontents/child/banner").then(__webpack_require__.bind(null, /*! ./child/banner.vue */ 124));};var comicmore = function comicmore() {return __webpack_require__.e(/*! import() | pages/comicDetails/compontents/comicmore */ "pages/comicDetails/compontents/comicmore").then(__webpack_require__.bind(null, /*! ../../comicDetails/compontents/comicmore.vue */ 117));};var _default = { components: { banner: banner, comicmore: comicmore }, props: [], data: function data() {
     return {
+      canScroll: true,
+      scrollStamp: 0,
+      scrollStamp_Temp: 0,
       comicdata: {},
       currentWebPage: 1,
-      nomore: false };
+      nomore: false,
+      timer: undefined };
 
   },
   mounted: function mounted() {var _this = this;
@@ -199,6 +204,18 @@ var banner = function banner() {return __webpack_require__.e(/*! import() | page
     } },
 
   methods: {
+    timerExec: function timerExec() {
+      var that = this;
+      if (that.scrollStamp_Temp === that.scrollStamp) {
+        that.canScroll = true;
+        clearInterval(that.timer);
+        that.timer = undefined;
+      } else {
+        that.canScroll = false;
+        that.scrollStamp_Temp = that.scrollStamp;
+      }
+      // console.log(that.canScroll, "监听事件", that.scrollStamp_Temp, that.scrollStamp)
+    },
     comicClick: function comicClick(id) {
       uni.navigateTo({
         url: '/pages/comicDetails/comicDetails?id=' + id });
@@ -235,6 +252,8 @@ var banner = function banner() {return __webpack_require__.e(/*! import() | page
       } else return 'https://image.yqmh.com' + item.feature_img;
     },
     loadMore: function loadMore() {var _this2 = this;
+      return;
+      // 下面的代码是以前的web端接口,已经废弃.
       if (this.nomore) return;
       uni.showNavigationBarLoading(true);
       _api.api.getDaliyUpdate(this.currentWebPage).then(function (res) {
@@ -250,6 +269,12 @@ var banner = function banner() {return __webpack_require__.e(/*! import() | page
     bannerItemClick: function bannerItemClick(item) {
       this.click_item(item);
       // console.log(item)
+    },
+    onScroll: function onScroll(event) {
+      // console.log(this.timer);
+      this.scrollStamp = event.timeStamp;
+      if (this.timer === undefined)
+      this.timer = setInterval(this.timerExec, 100);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

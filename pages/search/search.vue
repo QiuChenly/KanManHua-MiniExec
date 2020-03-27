@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		我是搜索页
 	</view>
 </template>
 

@@ -1,9 +1,10 @@
 <template>
-	<scroll-view scroll-y="true" lower-threshold="100px" @scrolltolower="loadMore" class="content" scroll-with-animation="true">
+	<scroll-view @scroll="onScroll" scroll-y="true" lower-threshold="100px" @scrolltolower="loadMore" class="content"
+	 scroll-with-animation="true">
 		<!-- @click="click_item(item)"  -->
 		<view class='item' v-for="(item,index) in getListAsTopic" :key="index">
 			<!-- banner -->
-			<banner @bannerItemClick='bannerItemClick' v-if="item.ordernum == 448370" :list="getlist"></banner>
+			<banner :canScroll="canScroll" @bannerItemClick='bannerItemClick' v-if="item.ordernum == 448370" :list="getlist"></banner>
 			<comicmore :item="item" :viewmode='getViewDisplayType(item)' v-else-if="item.ordernum != '448370'" @comicClick='comicClick'>
 
 			</comicmore>
@@ -28,9 +29,13 @@
 		],
 		data() {
 			return {
+				canScroll: true,
+				scrollStamp: 0,
+				scrollStamp_Temp: 0,
 				comicdata: {},
 				currentWebPage: 1,
-				nomore: false
+				nomore: false,
+				timer: undefined
 			}
 		},
 		mounted() {
@@ -65,6 +70,18 @@
 			}
 		},
 		methods: {
+			timerExec() {
+				var that = this;
+				if (that.scrollStamp_Temp === that.scrollStamp) {
+					that.canScroll = true;
+					clearInterval(that.timer);
+					that.timer = undefined;
+				} else {
+					that.canScroll = false;
+					that.scrollStamp_Temp = that.scrollStamp;
+				}
+				// console.log(that.canScroll, "监听事件", that.scrollStamp_Temp, that.scrollStamp)
+			},
 			comicClick(id) {
 				uni.navigateTo({
 					url: '/pages/comicDetails/comicDetails?id=' + id
@@ -85,7 +102,7 @@
 					case 13416:
 					case 13354:
 					case 13430:
-						return 'HeterotypicV1';//异型版v1布局
+						return 'HeterotypicV1'; //异型版v1布局
 					default:
 						return 'default';
 				}
@@ -101,6 +118,8 @@
 				} else return 'https://image.yqmh.com' + item.feature_img;
 			},
 			loadMore() {
+				return;
+				// 下面的代码是以前的web端接口,已经废弃.
 				if (this.nomore) return;
 				uni.showNavigationBarLoading(true)
 				api.getDaliyUpdate(this.currentWebPage).then(res => {
@@ -116,6 +135,12 @@
 			bannerItemClick(item) {
 				this.click_item(item)
 				// console.log(item)
+			},
+			onScroll(event) {
+				// console.log(this.timer);
+				this.scrollStamp = event.timeStamp;
+				if (this.timer === undefined)
+					this.timer = setInterval(this.timerExec, 100)
 			}
 		}
 	}
