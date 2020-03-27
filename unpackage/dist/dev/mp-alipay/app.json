@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/comicDetails/comicDetails",
+    "pages/home/home",
+    "pages/horizontal/horizontal",
+    "pages/video/video",
+    "pages/search/search",
+    "pages/mine/mine"
+  ],
+  "subPackages": [],
+  "window": {
+    "defaultTitle": "uni-app",
+    "titleBarColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "items": [
+      {
+        "pagePath": "pages/home/home",
+        "name": "首页"
+      },
+      {
+        "pagePath": "pages/horizontal/horizontal",
+        "name": "横屏"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "name": "精美视频"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "name": "搜索"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "name": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

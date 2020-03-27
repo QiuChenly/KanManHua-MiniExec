@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="@types/uni-app" level="application" />
+    <orderEntry type="library" name="@types/eslint" level="application" />
+    <orderEntry type="library" name="@types/html5plus" level="application" />
+    <orderEntry type="library" name="@types/js-beautify" level="application" />
+    <orderEntry type="library" name="@types/htmlhint" level="application" />
+    <orderEntry type="library" name="@types/less" level="application" />
+    <orderEntry type="library" name="@types/node" level="application" />
+    <orderEntry type="library" name="@types/prettier" level="application" />
+    <orderEntry type="library" name="stylus" level="application" />
+    <orderEntry type="library" name="stylelint" level="application" />
+  </component>
+</module>

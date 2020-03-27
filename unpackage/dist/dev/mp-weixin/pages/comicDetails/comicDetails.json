@@ -1,0 +1,11 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "q-bar": "/compontents/qBar",
+    "q-tab": "/compontents/qTab",
+    "comicdesc": "/pages/comicDetails/compontents/comicdesc",
+    "comicchapter": "/pages/comicDetails/compontents/comicchapter",
+    "q-share": "/compontents/qShare",
+    "comicmore": "/pages/comicDetails/compontents/comicmore"
+  }
+}

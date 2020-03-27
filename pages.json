@@ -1,0 +1,67 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		}, {
+			"path": "pages/search/search",
+			"style": {
+				"navigationBarTitleText": "搜索"
+			}
+		}, {
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}, {
+			"path": "pages/readcomic/readcomic",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/comicDetails/comicDetails",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"tabBar": {
+		"position": "bottom",
+		"selectedColor": "#1296db",
+		"list": [{
+				"text": "首页",
+				"iconPath": "static/Home.png",
+				"selectedIconPath": "static/Home_select.png",
+				"pagePath": "pages/home/home"
+			},
+			{
+				"iconPath": "static/search.png",
+				"selectedIconPath": "static/search_select.png",
+				"text": "搜索",
+				"pagePath": "pages/search/search"
+			},
+			{
+				"iconPath": "static/person.png",
+				"selectedIconPath": "static/person_select.png",
+				"text": "我的",
+				"pagePath": "pages/mine/mine"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"condition": { //模式配置，仅开发期间生效 tmd没用啊 真的龙鸣
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "gkd", //模式名称
+			"path": "pages/comicDetails/comicDetails", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}

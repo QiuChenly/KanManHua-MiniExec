@@ -1,0 +1,120 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.content.data-v-f07e9668 {
+  position: relative;
+  overflow: hidden;
+}
+.bgbox.data-v-f07e9668 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.bgbox .bgshadow.data-v-f07e9668 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.bgbox .bg.data-v-f07e9668 {
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    height: 120%;
+    width: 120%;
+    -webkit-filter: blur(15px);
+            filter: blur(15px);
+}
+.dot.data-v-f07e9668 {
+  position: absolute;
+  left: 50%;
+  bottom: 20rpx;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.dot view.data-v-f07e9668 {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    border-radius: 15rpx;
+    width: 15rpx;
+    height: 15rpx;
+    margin-left: 10rpx;
+    background-color: #007AFF;
+}
+.dot view.data-v-f07e9668:first-child {
+    margin-left: 0;
+}
+.active.data-v-f07e9668 {
+  width: 30rpx !important;
+}
+.deactive.data-v-f07e9668 {
+  width: 15rpx !important;
+}
+.currently image.data-v-f07e9668 {
+  width: 90% !important;
+  left: 5% !important;
+  box-shadow: 0 0 8px black;
+}
+.precurrently image.data-v-f07e9668 {
+  width: 90% !important;
+  left: 5% !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+.item.data-v-f07e9668 {
+  -webkit-perspective: 500rpx;
+          perspective: 500rpx;
+  position: relative;
+}
+.item image.data-v-f07e9668 {
+    position: absolute;
+    top: 3.33%;
+    border-radius: 20rpx;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    width: 100%;
+    height: 60%;
+}
+.item .detail.data-v-f07e9668 {
+    position: absolute;
+    bottom: 10px;
+    padding: 15px;
+    width: 100%;
+}
+.item .detail text.data-v-f07e9668 {
+      display: block;
+      width: calc(100% - 30px);
+      text-align: right;
+      color: white;
+      font-size: 25rpx;
+}
+.item .detail text.data-v-f07e9668:first-child {
+      font-size: 35rpx;
+}
+

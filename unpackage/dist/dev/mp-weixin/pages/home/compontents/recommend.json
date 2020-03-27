@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "banner": "/pages/home/compontents/child/banner",
+    "comicmore": "/pages/comicDetails/compontents/comicmore"
+  }
+}

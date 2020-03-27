@@ -1,0 +1,157 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.content .c-title.data-v-616f7309 {
+  padding: 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 38rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.content .c-title .c-title-image.data-v-616f7309 {
+    margin-left: 20rpx;
+    height: 38rpx;
+    width: 38rpx;
+}
+.content .comic-item.data-v-616f7309 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.item-comic-box-image.data-v-616f7309 {
+  position: relative;
+  border-radius: 10rpx;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.35);
+  display: block;
+  width: 100%;
+}
+.comic-name-box.data-v-616f7309 {
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.comic-name-box .title.data-v-616f7309 {
+    font-size: 26rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.comic-name-box .subtit.data-v-616f7309 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 23rpx;
+    color: gray;
+}
+.comic-name-box-left .title.data-v-616f7309 {
+  text-align: left;
+}
+.comic-name-box-left .subtit.data-v-616f7309 {
+  text-align: left;
+}
+.comic-name-box-right .title.data-v-616f7309 {
+  text-align: right;
+}
+.comic-name-box-right .subtit.data-v-616f7309 {
+  text-align: right;
+}
+.tag-box.data-v-616f7309 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0 0 10rpx 10rpx;
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.tag-box .tag.data-v-616f7309 {
+    margin: 5rpx 0;
+    border: 2rpx solid black;
+    border-radius: 20rpx;
+    padding: 0 10rpx;
+    font-size: 20rpx;
+    margin-left: 10rpx;
+}
+.item-comic-box.data-v-616f7309 {
+  margin-left: 20rpx;
+  width: calc((100% - 60rpx)/2);
+  margin-bottom: 10rpx;
+}
+.item-comic-box .item-comic-box-image.data-v-616f7309 {
+    height: 200rpx;
+}
+.item-comic-square.data-v-616f7309 {
+  margin-left: 20rpx;
+  width: calc((750rpx - 60rpx) / 2);
+}
+.item-comic-square .tag-box.data-v-616f7309 {
+    visibility: visible;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+            justify-content: center;
+}
+.item-comic-square .item-comic-box-image.data-v-616f7309 {
+    height: calc((750rpx - 60rpx) / 2);
+}
+.item-comic-trisection.data-v-616f7309 {
+  margin-left: 20rpx;
+  width: calc((750rpx - 80rpx) / 3);
+}
+.item-comic-trisection .item-comic-box-image.data-v-616f7309 {
+    height: calc((750rpx - 200rpx) / 2);
+}
+.item-comic-heterotypic-v1.data-v-616f7309 {
+  margin-left: 20rpx;
+  width: calc((750rpx - 60rpx) / 6 * 2);
+}
+.item-comic-heterotypic-v1 .item-comic-box-image.data-v-616f7309 {
+    height: calc((750rpx - 200rpx) / 2);
+}
+.item-comic-heterotypic-v1.data-v-616f7309:nth-child(1),
+.item-comic-heterotypic-v1.data-v-616f7309:nth-child(4) {
+  width: calc((750rpx - 60rpx) / 6 * 4);
+}
+

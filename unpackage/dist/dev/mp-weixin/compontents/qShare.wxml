@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['viewclick',['$event']]]]]}}" class="content data-v-708a2e26" bindtap="__e"><image class="content-image data-v-708a2e26" src="../static/share.png" mode="aspectFit"></image><text class="content-title data-v-708a2e26">{{shareMsg}}</text></view>

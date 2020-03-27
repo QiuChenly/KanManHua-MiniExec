@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "banner": "/pages/home/compontents/child/banner"
+  }
+}
