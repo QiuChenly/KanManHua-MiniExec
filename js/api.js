@@ -32,6 +32,29 @@ api.getDetails = (id) => {
 	})
 }
 
+/**
+ * 获取热门搜索
+ */
+api.getHotSearchKey = () => {
+	let u =
+		'https://getcomicinfo-globalapi.yyhao.com/app_api/v5/gettopsearch/?platform=6&productname=kmh&platformname=weixin_applet&client-type=weixin_applet&client-channel=tencent&client-version=3.2.4';
+	return req(u, '').then((res) => {
+		return res[1].data
+	})
+}
+
+/**
+ * 获取搜索结果
+ */
+api.getSearchResult = (keyWord, index) => {
+	let u =
+		'https://getcomicinfo-globalapi.yyhao.com/app_api/v5/getsortlist/?platform=6&productname=kmh&platformname=weixin_applet&client-type=weixin_applet&client-channel=tencent&client-version=3.2.4&search_key=' +
+		encodeURI(keyWord) + '&orderby=click&page=' + index;
+	return req(u, '').then(res => {
+		return res[1].data;
+	})
+}
+
 api.getBookByComicIDNew = (id) => {
 	let u = 'https://cms-booklist.321mh.com/api/v1/bookList/getBookByComicidNew';
 	let data = {

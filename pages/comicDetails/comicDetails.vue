@@ -68,11 +68,7 @@
 		<comicmore @comicClick='comicClick' :item='item' v-for="(item,index) in moreComic.data" :key='index'></comicmore>
 
 
-		<!-- 底部占位图 -->
-		<view class="bottom">
-			<image src="https://resource.mhxk.com/kanman_pc/static/images/comm/logo-kmh.png" mode="aspectFit"></image>
-			<text>数据来源: 看漫画网站</text>
-		</view>
+		<qBottomTips></qBottomTips>
 
 		<!-- <swiper :duration="300" :current="tabcurrent" @change="swiperchange" :style="{
 			'height':'calc(100vh - 80rpx - '+barHeight+'px)',
@@ -98,6 +94,7 @@
 
 	import qShare from '../../compontents/qShare.vue'
 	import comicmore from './compontents/comicmore.vue'
+	import qBottomTips from '../../compontents/qBottomTips.vue'
 
 
 	export default {
@@ -124,6 +121,7 @@
 		components: {
 			qBar,
 			qTab,
+			qBottomTips,
 			comicdesc,
 			comicchapter,
 			qShare,
@@ -251,31 +249,5 @@
 		overflow: scroll;
 		margin-top: 10rpx;
 		// background-color: #4CD964;
-	}
-
-	.bottom {
-		margin-top: 100rpx;
-		border-top: 1rpx solid rgba(192, 192, 192, .4);
-		// background-color: #007AFF;
-		height: 200rpx;
-		font-size: 25rpx;
-		position: relative;
-
-		image {
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			bottom: 50%;
-			width: 25%;
-			height: 25%;
-		}
-
-		text {
-			// background-color: #4CD964;
-			position: absolute;
-			bottom: 30rpx;
-			left: 50%;
-			transform: translateX(-50%);
-		}
 	}
 </style>

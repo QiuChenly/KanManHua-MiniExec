@@ -1,0 +1,24 @@
+.bottom.data-v-3181bf4c {
+  margin-top: 50rpx;
+  border-top: 1rpx solid rgba(192, 192, 192, 0.4);
+  height: 200rpx;
+  font-size: 25rpx;
+  position: relative;
+}
+.bottom .logo.data-v-3181bf4c {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 50%;
+  width: 25%;
+  height: 25%;
+}
+.bottom .tit.data-v-3181bf4c {
+  position: absolute;
+  bottom: 30rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+

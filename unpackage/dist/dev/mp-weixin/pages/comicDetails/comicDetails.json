@@ -3,6 +3,7 @@
   "usingComponents": {
     "q-bar": "/compontents/qBar",
     "q-tab": "/compontents/qTab",
+    "q-bottom-tips": "/compontents/qBottomTips",
     "comicdesc": "/pages/comicDetails/compontents/comicdesc",
     "comicchapter": "/pages/comicDetails/compontents/comicchapter",
     "q-share": "/compontents/qShare",

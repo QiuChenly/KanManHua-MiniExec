@@ -1,0 +1,1 @@
+<view class="content"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"><text data-event-opts="{{[['tap',[['click',['$0'],[[['list','',index,'comic_id']]]]]]]}}" class="tag" bindtap="__e">{{item.comic_name}}</text></block></view>

@@ -9,6 +9,7 @@
 
 			</comicmore>
 		</view>
+		<qBottomTips></qBottomTips>
 	</scroll-view>
 </template>
 
@@ -18,11 +19,13 @@
 	} from '../../../js/api.js'
 	import banner from './child/banner.vue'
 	import comicmore from '../../comicDetails/compontents/comicmore.vue'
+	import qBottomTips from '../../../compontents/qBottomTips.vue'
 
 	export default {
 		components: {
 			banner,
-			comicmore
+			comicmore,
+			qBottomTips
 		},
 		props: [
 

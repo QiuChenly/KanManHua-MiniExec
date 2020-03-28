@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "banner": "/pages/home/compontents/child/banner",
-    "comicmore": "/pages/comicDetails/compontents/comicmore"
+    "comicmore": "/pages/comicDetails/compontents/comicmore",
+    "q-bottom-tips": "/compontents/qBottomTips"
   }
 }

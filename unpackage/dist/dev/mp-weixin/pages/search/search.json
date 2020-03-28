@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "搜索",
-  "usingComponents": {}
+  "usingComponents": {
+    "hotsearch": "/pages/search/compontents/hotsearch",
+    "search-list": "/pages/search/compontents/searchList"
+  }
 }
