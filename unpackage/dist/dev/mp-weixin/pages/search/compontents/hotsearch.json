@@ -1,6 +1,6 @@
 {
+  "component": true,
   "usingComponents": {
     "q-hot-tag": "/compontents/qHotTag"
-  },
-  "component": true
+  }
 }

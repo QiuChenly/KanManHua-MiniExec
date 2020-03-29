@@ -152,6 +152,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _api = __webpack_require__(/*! ../../js/api.js */ 29); //
 //
 //
@@ -169,12 +172,14 @@ var _api = __webpack_require__(/*! ../../js/api.js */ 29); //
 //
 //
 //
-var that;var hotsearch = function hotsearch() {return __webpack_require__.e(/*! import() | pages/search/compontents/hotsearch */ "pages/search/compontents/hotsearch").then(__webpack_require__.bind(null, /*! ./compontents/hotsearch.vue */ 84));};var searchList = function searchList() {return __webpack_require__.e(/*! import() | pages/search/compontents/searchList */ "pages/search/compontents/searchList").then(__webpack_require__.bind(null, /*! ./compontents/searchList.vue */ 171));};var _default = { data: function data() {return { keywordList: [], searchDefault: '仙', searchRet: { maxPage: 0, currentPage: 1, list: [] }, fetchState: -1 };
-
-  },
+//
+//
+//
+var that;var hotsearch = function hotsearch() {return __webpack_require__.e(/*! import() | pages/search/compontents/hotsearch */ "pages/search/compontents/hotsearch").then(__webpack_require__.bind(null, /*! ./compontents/hotsearch.vue */ 84));};var searchList = function searchList() {return __webpack_require__.e(/*! import() | pages/search/compontents/searchList */ "pages/search/compontents/searchList").then(__webpack_require__.bind(null, /*! ./compontents/searchList.vue */ 91));};var qLoading = function qLoading() {return __webpack_require__.e(/*! import() | compontents/qLoading */ "compontents/qLoading").then(__webpack_require__.bind(null, /*! ../../compontents/qLoading.vue */ 187));};var _default = { data: function data() {return { keywordList: [], searchDefault: '', searchRet: { maxPage: 0, currentPage: 1, list: [] }, fetchState: -1 };},
   components: {
     hotsearch: hotsearch,
-    searchList: searchList },
+    searchList: searchList,
+    qLoading: qLoading },
 
   mounted: function mounted() {
     that = this;
@@ -201,8 +206,16 @@ var that;var hotsearch = function hotsearch() {return __webpack_require__.e(/*! 
       this.searchDefault = e.detail.value;
     },
     search: function search() {
+      if (this.searchDefault.length <= 0) {
+        uni.showToast({
+          title: '请输入搜索内容!',
+          icon: 'none' });
+
+        return;
+      }
       // console.log(this.searchDefault)
       that.searchRet.list = [];
+      that.searchRet.currentPage = 1;
       this.searchNet(this.searchDefault, that.searchRet.currentPage);
     },
     searchNet: function searchNet(key, index) {

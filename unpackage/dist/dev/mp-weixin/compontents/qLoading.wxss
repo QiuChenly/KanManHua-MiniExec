@@ -1,0 +1,98 @@
+
+@-webkit-keyframes jump-data-v-b7f88d7a {
+from {
+    height: 5rpx;
+}
+50% {
+    height: 30rpx;
+}
+100% {
+    height: 5rpxx;
+}
+}
+@keyframes jump-data-v-b7f88d7a {
+from {
+    height: 5rpx;
+}
+50% {
+    height: 30rpx;
+}
+100% {
+    height: 5rpxx;
+}
+}
+.title.data-v-b7f88d7a {
+  font-size: 25rpx;
+  display: block;
+  text-align: center;
+}
+.content.data-v-b7f88d7a {
+  width: 100%;
+}
+.content .cls-ul.data-v-b7f88d7a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 100rpx;
+}
+.content .cls-ul .bar.data-v-b7f88d7a {
+  height: 0;
+  width: 10rpx;
+  background-color: crimson;
+  /* border: 1px solid cadetblue; */
+  margin-left: 10rpx;
+  position: relative;
+  display: inline-block;
+}
+.content .cls-ul .bar.data-v-b7f88d7a::after,
+.content .cls-ul .bar.data-v-b7f88d7a::before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 5rpx;
+  background-color: crimson;
+  position: absolute;
+  left: 0;
+}
+.content .cls-ul .bar.data-v-b7f88d7a::after {
+  top: 0;
+  border-bottom-right-radius: 15rpx;
+  border-bottom-left-radius: 15rpx;
+}
+.content .cls-ul .bar.data-v-b7f88d7a::before {
+  bottom: 0;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+}
+.cls-ul .bar.data-v-b7f88d7a:nth-child(1)::after,
+.cls-ul .bar.data-v-b7f88d7a:nth-child(1)::before {
+  -webkit-animation: jump-data-v-b7f88d7a 1.5s infinite 0.2s;
+          animation: jump-data-v-b7f88d7a 1.5s infinite 0.2s;
+}
+.cls-ul .bar.data-v-b7f88d7a:nth-child(2)::after,
+.cls-ul .bar.data-v-b7f88d7a:nth-child(2)::before {
+  -webkit-animation: jump-data-v-b7f88d7a 1.5s infinite 0.4s;
+          animation: jump-data-v-b7f88d7a 1.5s infinite 0.4s;
+}
+.cls-ul .bar.data-v-b7f88d7a:nth-child(3)::after,
+.cls-ul .bar.data-v-b7f88d7a:nth-child(3)::before {
+  -webkit-animation: jump-data-v-b7f88d7a 1.5s infinite 0.6s;
+          animation: jump-data-v-b7f88d7a 1.5s infinite 0.6s;
+}
+.cls-ul .bar.data-v-b7f88d7a:nth-child(4)::after,
+.cls-ul .bar.data-v-b7f88d7a:nth-child(4)::before {
+  -webkit-animation: jump-data-v-b7f88d7a 1.5s infinite 0.8s;
+          animation: jump-data-v-b7f88d7a 1.5s infinite 0.8s;
+}
+.cls-ul .bar.data-v-b7f88d7a:nth-child(5)::after,
+.cls-ul .bar.data-v-b7f88d7a:nth-child(5)::before {
+  -webkit-animation: jump-data-v-b7f88d7a 1.5s infinite 1s;
+          animation: jump-data-v-b7f88d7a 1.5s infinite 1s;
+}
+

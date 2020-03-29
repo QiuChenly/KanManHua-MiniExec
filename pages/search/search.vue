@@ -7,10 +7,13 @@
 			<image v-show="searchDefault != ''" @click="clearText" class="clearImg" src="../../static/clear.png" mode="aspectFit"></image>
 			<view @click="search" class="searchBtn">搜索</view>
 		</view>
-
-		<scroll-view class='sRetCls' scroll-y="true" lower-threshold="100" @scrolltolower="getMore">
+		<qLoading v-if='keywordList.length<=0'></qLoading>
+		<scroll-view v-else class='sRetCls' scroll-y="true" lower-threshold="100" @scrolltolower="getMore">
 			<hotsearch v-if="searchRet.list.length<=0" :list='keywordList'></hotsearch>
-			<searchList @goDetail='goDetail' v-else :list='searchRet.list' :hasMore='fetchState != 1'></searchList>
+			<div v-else >
+				<qLoading v-if='searchRet.list.length<=0'></qLoading>
+				<searchList @goDetail='goDetail' :list='searchRet.list' :hasMore='fetchState != 1'></searchList>
+			</div>
 		</scroll-view>
 	</view>
 </template>
@@ -23,12 +26,13 @@
 
 	import hotsearch from './compontents/hotsearch.vue'
 	import searchList from './compontents/searchList.vue'
+	import qLoading from '../../compontents/qLoading.vue'
 
 	export default {
 		data() {
 			return {
 				keywordList: [],
-				searchDefault: '仙',
+				searchDefault: '',
 				searchRet: {
 					maxPage: 0,
 					currentPage: 1,
@@ -39,7 +43,8 @@
 		},
 		components: {
 			hotsearch,
-			searchList
+			searchList,
+			qLoading
 		},
 		mounted() {
 			that = this;
@@ -66,8 +71,16 @@
 				this.searchDefault = e.detail.value;
 			},
 			search() {
+				if(this.searchDefault.length<=0){
+					uni.showToast({
+						title:'请输入搜索内容!',
+						icon:'none'
+					})
+					return;
+				}
 				// console.log(this.searchDefault)
 				that.searchRet.list = [];
+				that.searchRet.currentPage = 1;
 				this.searchNet(this.searchDefault, that.searchRet.currentPage);
 			},
 			searchNet(key, index) {

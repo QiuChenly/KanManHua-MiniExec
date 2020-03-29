@@ -2,6 +2,7 @@
   "navigationBarTitleText": "搜索",
   "usingComponents": {
     "hotsearch": "/pages/search/compontents/hotsearch",
-    "search-list": "/pages/search/compontents/searchList"
+    "search-list": "/pages/search/compontents/searchList",
+    "q-loading": "/compontents/qLoading"
   }
 }

@@ -2,12 +2,15 @@
 	<view class="list" @click='clickItem'>
 		<image lazy-load="true" class="content-img" :src="'https://image.yqmh.com/mh/' + comicid + '.jpg'" mode="aspectFill"></image>
 		<div class="content-right">
-			<div class='comicTit'>{{comicinfo.comic_name}}</div>
-			<div class='subtit'>{{comicinfo.comic_author}}</div>
-			<div class='tags'>
-				<text class="tags-item" v-if="index<4" v-for="(item,index) in comicinfo.comic_type_new" :key='index'>{{item.name}}</text>
+			<qLoading v-if='comicinfo.comic_author === ""'></qLoading>
+			<div v-else>
+				<div class='comicTit'>{{comicinfo.comic_name}}</div>
+				<div class='subtit'>{{comicinfo.comic_author}}</div>
+				<div class='tags'>
+					<text class="tags-item" v-if="index<4" v-for="(item,index) in comicinfo.comic_type_new" :key='index'>{{item.name}}</text>
+				</div>
+				<div class='extraMsg'>更新到: {{comicinfo.last_chapter_name}}</div>
 			</div>
-			<div class='extraMsg'>更新到: {{comicinfo.last_chapter_name}}</div>
 		</div>
 	</view>
 </template>
@@ -17,16 +20,22 @@
 	import {
 		api
 	} from '../../../js/api.js'
+
+	import qLoading from '../../../compontents/qLoading.vue'
 	export default {
 		props: {
 			comicid: {
 
 			}
 		},
+		components: {
+			qLoading
+		},
 		data() {
 			return {
 				comicinfo: {
-					comic_name: '加载中...'
+					comic_name: '加载中...',
+					comic_author: ''
 				},
 			};
 		},
@@ -34,8 +43,10 @@
 			var that = this;
 			// console.log(this.comicid)
 			api.getDetails(this.comicid).then(data => {
-				that.comicinfo = data;
-				console.log(that.comicinfo)
+				setTimeout(() => {
+					that.comicinfo = data;
+					console.log(that.comicinfo)
+				}, 500)
 			})
 		},
 		methods: {
