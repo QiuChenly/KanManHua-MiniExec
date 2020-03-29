@@ -96,6 +96,10 @@
 	import comicmore from './compontents/comicmore.vue'
 	import qBottomTips from '../../compontents/qBottomTips.vue'
 
+	import {
+		mapMutations,
+		mapState
+	} from 'vuex'
 
 	export default {
 		data() {
@@ -118,6 +122,8 @@
 				moreComic: {}
 			};
 		},
+		computed: {
+		},
 		components: {
 			qBar,
 			qTab,
@@ -139,6 +145,11 @@
 				that.barImg = comicInfo.cover_list[1];
 				// console.log(that.barImg)
 				that.barTit = comicInfo.comic_name;
+				// 保存到本地最近阅读
+				that.addRecentRead({
+					comicID: option.id,
+					comicName: comicInfo.comic_name
+				});
 			}).then(() => {
 				api.getBookByComicIDNew(that.comicID, '').then(res => {
 					that.moreComic = res;
@@ -148,6 +159,7 @@
 
 		},
 		methods: {
+			...mapMutations(['addRecentRead']),//加入最近阅读历史
 			itemchange(index) {
 				this.tabcurrent = index;
 			},

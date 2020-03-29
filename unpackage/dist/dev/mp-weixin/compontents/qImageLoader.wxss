@@ -27,5 +27,7 @@
 .main.data-v-1ef244d5 {
   background-color: black;
   display: block;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 

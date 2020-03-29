@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "comicitem": "/pages/search/compontents/comicitem"
+  }
+}

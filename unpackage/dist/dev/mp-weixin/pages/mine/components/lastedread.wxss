@@ -1,0 +1,11 @@
+
+.content.data-v-509518ec {
+	width: 100%;
+	height: 100%;
+}
+.place.data-v-509518ec{
+	/* 在最下面放一个20rpx高度占位元素,欺骗用户以为底部也有20的间隔,一致化整体风格. */
+	height: 20rpx;
+	opacity: 0;
+}
+

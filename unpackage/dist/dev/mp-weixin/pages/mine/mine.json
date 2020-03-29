@@ -1,4 +1,10 @@
 {
   "navigationBarTitleText": "我的",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "q-tab": "/compontents/qTab",
+    "mybook": "/pages/mine/components/mybooklist",
+    "recent": "/pages/mine/components/lastedread",
+    "q-bar": "/compontents/qBar"
+  }
 }

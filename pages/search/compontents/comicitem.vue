@@ -45,7 +45,7 @@
 			api.getDetails(this.comicid).then(data => {
 				setTimeout(() => {
 					that.comicinfo = data;
-					console.log(that.comicinfo)
+					// console.log(that.comicinfo)
 				}, 500)
 			})
 		},
@@ -87,7 +87,7 @@
 
 			.comicTit {
 				font-size: 30rpx;
-				height: 70rpx;
+				height: 60rpx;
 				line-height: 70rpx;
 			}
 
@@ -99,6 +99,9 @@
 
 			.tags {
 				flex: 1;
+				display: flex;
+				// background-color: #4CD964;
+				align-items: center;
 			}
 
 			.tags-item {
@@ -112,10 +115,13 @@
 
 			.extraMsg {
 				flex: 1;
+				height: 70rpx;
+				line-height: 70rpx;
 				font-size: 24rpx;
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
+				// background-color: #007AFF;
 			}
 		}
 	}

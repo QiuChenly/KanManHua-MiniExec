@@ -40,21 +40,32 @@
   overflow: scroll;
 }
 .menu.data-v-49065ac8 {
-  width: 130rpx;
   position: relative;
   text-align: center;
   line-height: 100rpx;
+  padding: 0 20rpx;
   font-size: 29rpx;
+}
+.baseShow.data-v-49065ac8 {
+  bottom: 15rpx;
+  border-radius: 12rpx;
+  background-color: #007AFF;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  opacity: 0;
 }
 .dot.data-v-49065ac8 {
   position: absolute;
-  bottom: 15rpx;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 12rpx;
   height: 12rpx;
-  border-radius: 12rpx;
-  background-color: #007AFF;
+}
+.line.data-v-49065ac8 {
+  width: calc(100% - 40rpx);
+  height: 8rpx;
+  position: absolute;
+  bottom: 15rpx;
 }
 

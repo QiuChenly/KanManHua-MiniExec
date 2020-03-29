@@ -17,6 +17,10 @@
 <script>
 	import qBar from "../../compontents/qBar.vue"
 	import qImageLoader from '../../compontents/qImageLoader.vue'
+	import {
+		mapState
+	} from 'vuex';
+	
 	export default {
 		components: {
 			qBar,
@@ -32,7 +36,7 @@
 			};
 		},
 		onLoad() {
-			this.data = JSON.parse(uni.getStorageSync('temp_read'));
+			this.data = this.temp['temp_read'];
 			this.barTit = this.data.chapter_name;
 			var index = 1;
 			var size = this.data.end_num;
@@ -40,6 +44,10 @@
 				this.list.push('https://mhpic.' + this.data.chapter_domain + this.data.chapter_image.high.replace('$$', index))
 				index++;
 			}
+		},
+		computed:{
+			// 从中转数据中监控读取temp数据
+			...mapState(['temp']),
 		},
 		methods: {
 			onPageScrollByBar(e) {

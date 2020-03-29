@@ -13,6 +13,9 @@
 </template>
 
 <script>
+	import {
+		mapMutations
+	} from 'vuex'
 	export default {
 		props: {
 			chapter: {
@@ -29,6 +32,7 @@
 			this.newer = this.dateFormat(this.chapter[0].create_date) + ' ' + this.chapter[0].chapter_name;
 		},
 		methods: {
+			...mapMutations(['setTempData']),
 			reverse() {
 				this.reversename = !this.reversename;
 				this.$emit('reversechapter', {});
@@ -55,7 +59,11 @@
 				return ret
 			},
 			goread(item) {
-				uni.setStorageSync('temp_read', JSON.stringify(item));
+				// 存储中转数据到vuex
+				this.setTempData({
+					'key': 'temp_read',
+					data: item
+				});
 				uni.navigateTo({
 					url: '/pages/readcomic/readcomic'
 				})

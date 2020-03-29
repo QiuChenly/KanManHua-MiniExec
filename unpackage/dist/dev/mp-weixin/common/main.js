@@ -9,13 +9,16 @@
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);__webpack_require__(/*! @dcloudio/uni-stat */ 5);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 9));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 9));
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store/store.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
+// Vue.prototype.$store = store;
 
 _App.default.mpType = 'app';
 
-var app = new _vue.default(_objectSpread({},
+var app = new _vue.default(_objectSpread({
+  store: _store.default },
 _App.default));
 
 createApp(app).$mount();
@@ -98,6 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
+    this.$store.commit('loadData');
+    // 初始化本地存储数据
   },
   onShow: function onShow() {
     var e = uni.getSystemInfoSync();
@@ -145,7 +150,7 @@ __webpack_require__.r(__webpack_exports__);
     // 这里你可以自己决定存放方式，建议放在store中，因为store是实时变化的
     uni.setStorageSync('SET_STATUS_BAR', statusBar);
     uni.setStorageSync('SET_CUSTOM_BAR', customBar);
-    uni.setStorageSync('SET_SYSTEM_INFO', JSON.stringify(e));
+    // uni.setStorageSync('SET_SYSTEM_INFO', JSON.stringify(e))
 
     console.log('App Show');
   },
