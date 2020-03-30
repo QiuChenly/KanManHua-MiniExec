@@ -37,6 +37,12 @@
           "query": "",
           "id": 1,
           "pathName": "pages/mine/mine"
+        },
+        {
+          "name": "阅读界面 debug",
+          "query": "id=107327",
+          "id": 2,
+          "pathName": "pages/comicDetails/comicDetails"
         }
       ]
     }

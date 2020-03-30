@@ -143,8 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var comicitem = function comicitem() {return Promise.all(/*! import() | pages/search/compontents/comicitem */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/search/compontents/comicitem")]).then(__webpack_require__.bind(null, /*! ./comicitem.vue */ 184));};var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var comicitem = function comicitem() {return Promise.all(/*! import() | pages/search/compontents/comicitem */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/search/compontents/comicitem")]).then(__webpack_require__.bind(null, /*! ./comicitem.vue */ 184));};var qNoMore = function qNoMore() {return __webpack_require__.e(/*! import() | compontents/qNoMore */ "compontents/qNoMore").then(__webpack_require__.bind(null, /*! ../../../compontents/qNoMore.vue */ 216));};var _default =
 
 
 
@@ -157,7 +156,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 {
   components: {
-    comicitem: comicitem },
+    comicitem: comicitem,
+    qNoMore: qNoMore },
 
   props: {
     list: {

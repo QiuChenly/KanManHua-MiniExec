@@ -26,6 +26,10 @@
 		props: {
 			comicid: {
 
+			},
+			// 内部调用,不通过外部调用直接跳转到漫画详情
+			internalCall: {
+				default: false
 			}
 		},
 		components: {
@@ -51,7 +55,10 @@
 		},
 		methods: {
 			clickItem() {
-				this.$emit('goDetail', this.comicid);
+				if (this.internalCall) uni.navigateTo({
+					url: '/pages/comicDetails/comicDetails?id=' + this.comicid
+				})
+				else this.$emit('goDetail', this.comicid);
 			}
 		},
 		computed: {

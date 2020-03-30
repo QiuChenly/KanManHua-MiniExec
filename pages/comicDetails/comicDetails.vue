@@ -60,8 +60,8 @@
 
 		<!-- 切换页面显示 -->
 		<view class="tab-swiper" :class="{'needMargin':isFixd}">
-			<comicdesc v-if="tabcurrent == 0" :item='comicdata'></comicdesc>
-			<comicchapter v-if="tabcurrent == 1" @reversechapter='reversechapter' :chapter='comicdata.comic_chapter'></comicchapter>
+			<comicdesc :comicInfo="comicInfoDesc" v-if="tabcurrent == 0" :item='comicdata'></comicdesc>
+			<comicchapter v-if="tabcurrent == 1" @reversechapter='reversechapter' :chapter='comicdata.comic_chapter' :comicID='comicID'></comicchapter>
 		</view>
 
 		<!-- 下方的更多推荐 -->
@@ -119,11 +119,14 @@
 				barTit: '漫画详情',
 				comicdata: {},
 				isFixd: false,
-				moreComic: {}
+				moreComic: {},
+				comicInfoDesc: {
+					comicID: 0,
+					comicName: 'test'
+				}
 			};
 		},
-		computed: {
-		},
+		computed: {},
 		components: {
 			qBar,
 			qTab,
@@ -137,6 +140,7 @@
 			let that = this;
 			this.barHeight = uni.getStorageSync("SET_CUSTOM_BAR") + 150;
 			this.comicID = option.id; //'91961'; //
+			this.comicInfoDesc.comicID = this.comicID;
 			this.barImg = 'https://image.yqmh.com/mh/' + this.comicID + '.jpg';
 			// console.log(this.barImg)
 			api.getDetails(this.comicID).then(comicInfo => {
@@ -145,6 +149,7 @@
 				that.barImg = comicInfo.cover_list[1];
 				// console.log(that.barImg)
 				that.barTit = comicInfo.comic_name;
+				that.comicInfoDesc.comicName = that.barTit;
 				// 保存到本地最近阅读
 				that.addRecentRead({
 					comicID: option.id,
@@ -159,7 +164,8 @@
 
 		},
 		methods: {
-			...mapMutations(['addRecentRead']),//加入最近阅读历史
+			...mapMutations(['addRecentRead']), //加入最近阅读历史
+			...mapMutations(['addFavBook']), //加入最近阅读历史
 			itemchange(index) {
 				this.tabcurrent = index;
 			},

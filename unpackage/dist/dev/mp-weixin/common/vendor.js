@@ -8525,7 +8525,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationBarTitleText": "首页" }, "pages/search/search": { "navigationBarTitleText": "搜索" }, "pages/mine/mine": { "navigationBarTitleText": "我的", "navigationStyle": "custom" }, "pages/readcomic/readcomic": { "navigationStyle": "custom" }, "pages/comicDetails/comicDetails": { "navigationStyle": "custom" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationBarTitleText": "首页", "usingComponents": { "q-tab": "/compontents/qTab", "category": "/pages/home/compontents/category", "newer": "/pages/home/compontents/newer", "recommend": "/pages/home/compontents/recommend", "zhuanji": "/pages/home/compontents/zhuanji" }, "usingAutoImportComponents": {} }, "pages/search/search": { "navigationBarTitleText": "搜索", "usingComponents": { "hotsearch": "/pages/search/compontents/hotsearch", "search-list": "/pages/search/compontents/searchList", "q-loading": "/compontents/qLoading" }, "usingAutoImportComponents": {} }, "pages/mine/mine": { "navigationBarTitleText": "我的", "navigationStyle": "custom", "usingComponents": { "q-tab": "/compontents/qTab", "mybook": "/pages/mine/components/mybooklist", "recent": "/pages/mine/components/lastedread", "q-bar": "/compontents/qBar" }, "usingAutoImportComponents": {} }, "pages/readcomic/readcomic": { "navigationStyle": "custom", "usingComponents": { "q-bar": "/compontents/qBar", "q-image-loader": "/compontents/qImageLoader" }, "usingAutoImportComponents": {} }, "pages/comicDetails/comicDetails": { "navigationStyle": "custom", "usingComponents": { "q-bar": "/compontents/qBar", "q-tab": "/compontents/qTab", "q-bottom-tips": "/compontents/qBottomTips", "comicdesc": "/pages/comicDetails/compontents/comicdesc", "comicchapter": "/pages/comicDetails/compontents/comicchapter", "q-share": "/compontents/qShare", "comicmore": "/pages/comicDetails/compontents/comicmore" }, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -8691,11 +8691,31 @@ var store = new _vuex.default.Store({
         key: 'recentRead',
         success: function success(res) {
           state.recentRead = res.data;
-          console.log("load succ");
+          console.log("load recentRead succ");
+        } });
+
+      uni.getStorage({
+        key: 'myBookList',
+        success: function success(res) {
+          state.myBookList = res.data;
+          console.log("load myBookList succ");
         } });
 
     },
-
+    /**
+        * 检查是否存在于本地我的书架
+        * @param {Object} state
+        * @param {Object} comicID 漫画ID
+        */
+    isAtLocalFavList: function isAtLocalFavList(state, comicID) {
+      var has = false;
+      state.myBookList.filter(function (it) {
+        if (it.comicID === comicID) {
+          has = true;
+        }
+      });
+      state.temp['isAtLocalFavList'] = has;
+    },
     /**
         * 添加最近阅读书籍
         * @param {Object} bookMap 漫画对象
@@ -8713,10 +8733,30 @@ var store = new _vuex.default.Store({
         key: 'recentRead',
         data: state.recentRead,
         success: function success() {
-          console.log('success');
+          console.log('save recentRead success');
         },
         fail: function fail() {
-          console.log('faild');
+          console.log('save recentRead faild');
+        } });
+
+    },
+
+    removeFavBook: function removeFavBook(state, comicID) {
+      var arr = [];
+      arr = state.myBookList.filter(function (it) {
+        if (it.comicID === comicID) {} else {
+          return it;
+        }
+      });
+      state.myBookList = arr;
+      uni.setStorage({
+        key: 'myBookList',
+        data: arr,
+        success: function success() {
+          console.log('del myBookList success');
+        },
+        fail: function fail() {
+          console.log('del myBookList fail');
         } });
 
     },
@@ -8725,6 +8765,24 @@ var store = new _vuex.default.Store({
         * @param {Object} comicInfo 漫画数据对象
         */
     addFavBook: function addFavBook(state, comicInfo) {
+      var arr = [];
+      arr.push(comicInfo);
+      state.myBookList.filter(function (it) {
+        if (it.comicID === comicInfo.comicID) {
+
+        } else arr.push(it);
+      });
+
+      state.myBookList = arr;
+      uni.setStorage({
+        key: 'myBookList',
+        data: arr,
+        success: function success() {
+          console.log('save myBookList success');
+        },
+        fail: function fail() {
+          console.log('save myBookList fail');
+        } });
 
     },
     /**

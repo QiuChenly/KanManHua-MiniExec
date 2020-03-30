@@ -31,7 +31,7 @@
 	  }" class="swiper-box" :current="currentindex"
 			 @change="changeItemSwiper" :duration="300">
 				<swiper-item>
-					<mybook></mybook>
+					<mybook @upEvent='upEvent'></mybook>
 				</swiper-item>
 				<swiper-item>
 					<recent @upEvent='upEvent'></recent>
@@ -70,18 +70,17 @@
 						title: "最近阅读"
 					}
 				],
-				currentindex: 1,
+				currentindex: 0,
 				scrollLimit: false, //设置滑动的最高位置
 			};
 		},
 		onLoad(args) {
 			this.customHeight = uni.getStorageSync("SET_CUSTOM_BAR") + 5;
 			var that = this;
-
 		},
 		onShow() {
 			//reload recently	
-			
+
 		},
 		methods: {
 			changeItem(index) {

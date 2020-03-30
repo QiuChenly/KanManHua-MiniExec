@@ -263,11 +263,14 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
       barTit: '漫画详情',
       comicdata: {},
       isFixd: false,
-      moreComic: {} };
+      moreComic: {},
+      comicInfoDesc: {
+        comicID: 0,
+        comicName: 'test' } };
+
 
   },
   computed: {},
-
   components: {
     qBar: qBar,
     qTab: qTab,
@@ -281,6 +284,7 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
     var that = this;
     this.barHeight = uni.getStorageSync("SET_CUSTOM_BAR") + 150;
     this.comicID = option.id; //'91961'; //
+    this.comicInfoDesc.comicID = this.comicID;
     this.barImg = 'https://image.yqmh.com/mh/' + this.comicID + '.jpg';
     // console.log(this.barImg)
     _api.api.getDetails(this.comicID).then(function (comicInfo) {
@@ -289,6 +293,7 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
       that.barImg = comicInfo.cover_list[1];
       // console.log(that.barImg)
       that.barTit = comicInfo.comic_name;
+      that.comicInfoDesc.comicName = that.barTit;
       // 保存到本地最近阅读
       that.addRecentRead({
         comicID: option.id,
@@ -303,7 +308,8 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
 
   },
   methods: _objectSpread({},
-  (0, _vuex.mapMutations)(['addRecentRead']), { //加入最近阅读历史
+  (0, _vuex.mapMutations)(['addRecentRead']),
+  (0, _vuex.mapMutations)(['addFavBook']), { //加入最近阅读历史
     itemchange: function itemchange(index) {
       this.tabcurrent = index;
     },

@@ -39,9 +39,9 @@
 | 详情 - 分享         | 未开始 |    -     |        -         | -                                             |
 | 阅读 - 当前章节     | 已完成 |   半天   |        85        | 用户体验一般.                                 |
 | 阅读 - 底部功能菜单 | 未开始 |    -     |        -         | -                                             |
-| 阅读 - 上一话下一话 | 未开始 |    -     |        -         | -                                             |
+| 阅读 - 上一话下一话 | 已完成 |    -     |        99        | -                                             |
 | 我的 - 整体布局     | 已完成 |   半天   |        95        | 页面排版简单.                                 |
-| 我的 - 我的书架     | 未开始 |    -     |        -         | -                                             |
+| 我的 - 我的书架     | 未开始 |    -     |        95        | -                                             |
 | 我的 - 最近阅读     | 未开始 |    -     |        90        | -                                             |
 | 登录 - 微信授权     | 未开始 |    -     |        -         | -                                             |
 | 本地存储 - Vuex     | 进行中 |   半天   |        98        | 利用实时Store进行数据即时共享,新数据共享手段. |
@@ -84,13 +84,23 @@
 ## 项目截图
 
 <img src="readme.assets/image-20200327141617829.png" alt="image-20200327141617829" style="zoom:50%;" />
+
 <img src="readme.assets/image-20200327141712374.png" alt="image-20200327141712374" style="zoom:50%;" />
-<img src="readme.assets/image-20200327141749312.png" alt="image-20200327141749312" style="zoom:50%;" />
+
+<img src="readme.assets/458124DC-AD31-48A2-9D0A-BF7079E49076_1_105_c.jpeg" alt="458124DC-AD31-48A2-9D0A-BF7079E49076_1_105_c" style="zoom: 67%;" />
+
 <img src="readme.assets/image-20200327141847399.png" alt="image-20200327141847399" style="zoom:50%;" />
+
 <img src="readme.assets/image-20200327142136645.png" alt="image-20200327142136645" style="zoom:50%;" />
 
-<img src="readme.assets/C1A4D217-A8D2-436A-B716-F5B491B45141.png" alt="C1A4D217-A8D2-436A-B716-F5B491B45141" style="zoom:50%;" /><img src="readme.assets/55177DF3-A0F6-418D-8931-EE573FCB09E2_1_105_c-5458162.jpeg" alt="55177DF3-A0F6-418D-8931-EE573FCB09E2_1_105_c" style="zoom: 67%;" />
+<img src="readme.assets/35FD6C98-7465-4659-A5B9-6DB0D1A87266_1_105_c.jpeg" alt="35FD6C98-7465-4659-A5B9-6DB0D1A87266_1_105_c" style="zoom: 67%;" />
+
+<img src="readme.assets/C1A4D217-A8D2-436A-B716-F5B491B45141.png" alt="C1A4D217-A8D2-436A-B716-F5B491B45141" style="zoom:50%;" />
+
+<img src="readme.assets/55177DF3-A0F6-418D-8931-EE573FCB09E2_1_105_c-5458162.jpeg" alt="55177DF3-A0F6-418D-8931-EE573FCB09E2_1_105_c" style="zoom: 67%;" />
 
 <img src="readme.assets/D614564C-4936-4BA1-9271-498C6C487FAA.png" alt="D614564C-4936-4BA1-9271-498C6C487FAA" style="zoom: 50%;" />
 
-<img src="readme.assets/449642F8-A9B6-4D68-999A-A2777A9BFEFC.png" alt="449642F8-A9B6-4D68-999A-A2777A9BFEFC" style="zoom:50%;" /><img src="readme.assets/image-20200330001744666.png" alt="image-20200330001744666" style="zoom:50%;" /><img src="readme.assets/image-20200330001803565.png" alt="image-20200330001803565" style="zoom:50%;" />
+<img src="readme.assets/image-20200330001803565.png" alt="image-20200330001803565" style="zoom:50%;" />
+
+<img src="readme.assets/image-20200330143614260.png" alt="image-20200330143614260" style="zoom:50%;" />

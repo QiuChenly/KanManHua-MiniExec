@@ -116,7 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -152,7 +152,11 @@ var _api = __webpack_require__(/*! ../../../js/api.js */ 31); //
 //
 //
 //
-var that;var qLoading = function qLoading() {return __webpack_require__.e(/*! import() | compontents/qLoading */ "compontents/qLoading").then(__webpack_require__.bind(null, /*! ../../../compontents/qLoading.vue */ 102));};var _default = { props: { comicid: {} }, components: { qLoading: qLoading }, data: function data() {return { comicinfo: { comic_name: '加载中...',
+var that;var qLoading = function qLoading() {return __webpack_require__.e(/*! import() | compontents/qLoading */ "compontents/qLoading").then(__webpack_require__.bind(null, /*! ../../../compontents/qLoading.vue */ 102));};var _default = { props: { comicid: {}, // 内部调用,不通过外部调用直接跳转到漫画详情
+    internalCall: { default: false } }, components: { qLoading: qLoading }, data: function data() {
+    return {
+      comicinfo: {
+        comic_name: '加载中...',
         comic_author: '' } };
 
 
@@ -169,10 +173,14 @@ var that;var qLoading = function qLoading() {return __webpack_require__.e(/*! im
   },
   methods: {
     clickItem: function clickItem() {
+      if (this.internalCall) uni.navigateTo({
+        url: '/pages/comicDetails/comicDetails?id=' + this.comicid });else
+
       this.$emit('goDetail', this.comicid);
     } },
 
   computed: {} };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -10,7 +10,7 @@
 		<qLoading v-if='keywordList.length<=0'></qLoading>
 		<scroll-view v-else class='sRetCls' scroll-y="true" lower-threshold="100" @scrolltolower="getMore">
 			<hotsearch v-if="searchRet.list.length<=0" :list='keywordList'></hotsearch>
-			<div v-else >
+			<div v-else>
 				<qLoading v-if='searchRet.list.length<=0'></qLoading>
 				<searchList @goDetail='goDetail' :list='searchRet.list' :hasMore='fetchState != 1'></searchList>
 			</div>
@@ -71,10 +71,10 @@
 				this.searchDefault = e.detail.value;
 			},
 			search() {
-				if(this.searchDefault.length<=0){
+				if (this.searchDefault.length <= 0) {
 					uni.showToast({
-						title:'请输入搜索内容!',
-						icon:'none'
+						title: '请输入搜索内容!',
+						icon: 'none'
 					})
 					return;
 				}

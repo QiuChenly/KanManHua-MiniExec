@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -151,8 +151,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+var _vuex = __webpack_require__(/*! vuex */ 16);
 
-var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var qBar = function qBar() {return __webpack_require__.e(/*! import() | compontents/qBar */ "compontents/qBar").then(__webpack_require__.bind(null, /*! ../../compontents/qBar.vue */ 121));};var qImageLoader = function qImageLoader() {return __webpack_require__.e(/*! import() | compontents/qImageLoader */ "compontents/qImageLoader").then(__webpack_require__.bind(null, /*! ../../compontents/qImageLoader.vue */ 128));};var _default =
+
+
+var _api = __webpack_require__(/*! ../../js/api.js */ 31);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var qBar = function qBar() {return __webpack_require__.e(/*! import() | compontents/qBar */ "compontents/qBar").then(__webpack_require__.bind(null, /*! ../../compontents/qBar.vue */ 121));};var qImageLoader = function qImageLoader() {return __webpack_require__.e(/*! import() | compontents/qImageLoader */ "compontents/qImageLoader").then(__webpack_require__.bind(null, /*! ../../compontents/qImageLoader.vue */ 128));};var _default =
 
 
 
@@ -167,25 +170,110 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
       data: {},
       list: [],
       hideBar: false,
-      lastTop: 0 };
+      lastTop: 0,
+      showMenu: false,
+      comicID: 0,
+      targetIndex: 0,
+      comicChapter: [],
+      comicBase: {} };
 
   },
-  onLoad: function onLoad() {
-    this.data = this.temp['temp_read'];
-    this.barTit = this.data.chapter_name;
-    var index = 1;
-    var size = this.data.end_num;
-    while (index <= size) {
-      this.list.push('https://mhpic.' + this.data.chapter_domain + this.data.chapter_image.high.replace('$$', index));
-      index++;
-    }
+  onLoad: function onLoad(option) {
+    // console.log(option)
+    var that = this;
+    this.comicID = option.id;
+    this.targetIndex = Number(option.chapter);
+    _api.api.getDetails(this.comicID).then(function (comicInfo) {
+      that.comicChapter = comicInfo.comic_chapter;
+      that.comicBase = comicInfo;
+      // 保存到本地最近阅读
+      // that.addRecentRead({
+      // 	comicID: option.id,
+      // 	comicName: comicInfo.comic_name
+      // });
+      // console.log(that.comicChapter);
+      return comicInfo.comic_chapter;
+    }).then(function (chapters) {
+      that.getSelectPage(chapters, 0);
+    });
   },
   computed: _objectSpread({},
 
   (0, _vuex.mapState)(['temp'])),
 
+  onShareAppMessage: function onShareAppMessage(res) {
+    if (res.from === 'button') {// 来自页面内分享按钮
+      console.log(res.target);
+    }
+    return {
+      title: '我在看《' + this.comicBase.comic_name + '》的《' + this.barTit + '》,你也快一起来看看⑧¿',
+      path: '/pages/readcomic/readcomic?id=' + this.comicID + '&chapter=' + this.targetIndex };
+
+  },
   methods: {
+    /**
+              * 获取下一话或上一话的数据
+              * @param {Object} chapters 目录集合
+              * @param {Object} mode 1 表示加载下一话 2 表示加载上一话 0 表示页面初始化加载章节
+              */
+    getSelectPage: function getSelectPage(chapters, mode) {
+      var that = this;
+      var target = that.targetIndex;
+      if (mode == 2) target--;
+      if (mode == 1) target++;
+      // console.log(that.targetIndex, target, mode)
+      that.data = chapters.filter(function (it, index) {
+        // console.log(it.chapter_order_num === that.targetIndex);
+        return it.chapter_order_num === target;
+      });
+      if (that.data.length <= 0) {
+        uni.showToast({
+          title: '没有章节了 QAQ',
+          duration: 1000,
+          icon: 'none' });
+
+        //没有更多章节了
+        return;
+      }
+      that.targetIndex = target;
+      that.data = that.data[0];
+      that.getCurrentPage();
+    },
+    getCurrentPage: function getCurrentPage() {
+      var that = this;
+      // console.log('that.data', that.data)
+      that.barTit = that.data.chapter_name;
+      var index = 1;
+      var size = that.data.end_num;
+      that.list = [];
+      while (index <= size) {
+        that.list.push('https://mhpic.' + that.data.chapter_domain + that.data.chapter_image.high.replace('$$', index));
+        index++;
+      }
+      //滑动到-100的距离,让他强制回到最上面
+      uni.pageScrollTo({
+        scrollTop: -100,
+        duration: 0 });
+
+    },
+    nextChapter: function nextChapter() {
+      console.log('nextChapter');
+      this.getSelectPage(this.comicChapter, 1);
+    },
+    upChapter: function upChapter() {
+      console.log('upChapter');
+      this.getSelectPage(this.comicChapter, 2);
+    },
     onPageScrollByBar: function onPageScrollByBar(e) {
+      var that = this;
+
+      //处理左侧上一话下一话菜单弹出
+      uni.createSelectorQuery().select('.content').
+      boundingClientRect(function (res) {
+        that.showMenu = res.height - e.scrollTop < 1000;
+      }).exec();
+
+
       if (e.scrollTop > 300) {
         var newState = e.scrollTop > this.lastTop;
         this.lastTop = e.scrollTop;
@@ -195,6 +283,7 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
         // console.log(this.hideBar)
       }
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

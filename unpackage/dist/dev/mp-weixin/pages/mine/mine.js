@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var qTab = function qTab() {return __webpack_require__.e(/*! import() | compontents/qTab */ "compontents/qTab").then(__webpack_require__.bind(null, /*! ../../compontents/qTab.vue */ 59));};var mybook = function mybook() {return __webpack_require__.e(/*! import() | pages/mine/components/mybooklist */ "pages/mine/components/mybooklist").then(__webpack_require__.bind(null, /*! ./components/mybooklist.vue */ 109));};var recent = function recent() {return Promise.all(/*! import() | pages/mine/components/lastedread */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/mine/components/lastedread")]).then(__webpack_require__.bind(null, /*! ./components/lastedread.vue */ 114));};var qBar = function qBar() {return __webpack_require__.e(/*! import() | compontents/qBar */ "compontents/qBar").then(__webpack_require__.bind(null, /*! ../../compontents/qBar */ 121));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var qTab = function qTab() {return __webpack_require__.e(/*! import() | compontents/qTab */ "compontents/qTab").then(__webpack_require__.bind(null, /*! ../../compontents/qTab.vue */ 59));};var mybook = function mybook() {return Promise.all(/*! import() | pages/mine/components/mybooklist */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/mine/components/mybooklist")]).then(__webpack_require__.bind(null, /*! ./components/mybooklist.vue */ 109));};var recent = function recent() {return Promise.all(/*! import() | pages/mine/components/lastedread */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/mine/components/lastedread")]).then(__webpack_require__.bind(null, /*! ./components/lastedread.vue */ 114));};var qBar = function qBar() {return __webpack_require__.e(/*! import() | compontents/qBar */ "compontents/qBar").then(__webpack_require__.bind(null, /*! ../../compontents/qBar */ 121));};var _default =
 
 
 
@@ -205,14 +205,13 @@ __webpack_require__.r(__webpack_exports__);
         title: "最近阅读" }],
 
 
-      currentindex: 1,
+      currentindex: 0,
       scrollLimit: false //设置滑动的最高位置
     };
   },
   onLoad: function onLoad(args) {
     this.customHeight = uni.getStorageSync("SET_CUSTOM_BAR") + 5;
     var that = this;
-
   },
   onShow: function onShow() {
     //reload recently	

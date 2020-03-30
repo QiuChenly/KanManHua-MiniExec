@@ -2,17 +2,17 @@
 	<view class="content">
 		<comicitem v-for="(item,index) in list" :key='index' :comicid='item.comic_id' @goDetail='goDetail'></comicitem>
 
-		<view class="nomore" v-show='!hasMore'>
-			😢~没有更多🌶
-		</view>
+		<qNoMore :hasMore='hasMore'></qNoMore>
 	</view>
 </template>
 
 <script>
 	import comicitem from './comicitem.vue'
+	import qNoMore from '../../../compontents/qNoMore.vue'
 	export default {
 		components: {
-			comicitem
+			comicitem,
+			qNoMore
 		},
 		props: {
 			list: {
@@ -36,13 +36,5 @@
 </script>
 
 <style lang="scss" scoped>
-	.content {
-
-		// height: 100%;
-		.nomore {
-			text-align: center;
-			padding: 35rpx 0;
-			font-size: 28rpx;
-		}
-	}
+	.content {}
 </style>

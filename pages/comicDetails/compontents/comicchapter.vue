@@ -5,7 +5,7 @@
 			<text class="tab-text lastupdate">{{newer}}</text>
 			<text class="tab-text reverse">{{reversename ? '正序↓':'倒序↑'}}</text>
 		</view>
-		<view class="item-style" v-for="(item,index) in chapter" :key="index" @click="goread(item)">
+		<view class="item-style" v-for="(item,index) in chapter" :key="index" @click="goread(item,index)">
 			<text class="item-style-chapter-name time">{{dateFormat(item.create_date)}}</text>
 			<text class="item-style-chapter-name">{{item.chapter_name}}</text>
 		</view>
@@ -20,6 +20,9 @@
 		props: {
 			chapter: {
 
+			},
+			comicID: {
+				default: ''
 			}
 		},
 		data() {
@@ -29,10 +32,21 @@
 			};
 		},
 		created() {
-			this.newer = this.dateFormat(this.chapter[0].create_date) + ' ' + this.chapter[0].chapter_name;
+			var last = this.getLastedChapter();
+			this.newer = this.dateFormat(last.create_date) + ' ' + last.chapter_name;
 		},
 		methods: {
 			...mapMutations(['setTempData']),
+			getLastedChapter() {
+				let arr = undefined;
+				this.chapter.filter(it => {
+					if (arr == undefined) arr = it;
+					if (arr.chapter_order_num <= it.chapter_order_num) {
+						arr = it;
+					}
+				})
+				return arr;
+			},
 			reverse() {
 				this.reversename = !this.reversename;
 				this.$emit('reversechapter', {});
@@ -58,14 +72,16 @@
 				//add0()方法在后面定义
 				return ret
 			},
-			goread(item) {
+			goread(item, index) {
+				var that = this;
+				// console.log(item)
 				// 存储中转数据到vuex
 				this.setTempData({
 					'key': 'temp_read',
 					data: item
 				});
 				uni.navigateTo({
-					url: '/pages/readcomic/readcomic'
+					url: '/pages/readcomic/readcomic?id=' + that.comicID + '&chapter=' + item.chapter_order_num
 				})
 			}
 		}

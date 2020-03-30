@@ -152,8 +152,11 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
 
 {
   props: {
-    chapter: {} },
+    chapter: {},
 
+
+    comicID: {
+      default: '' } },
 
 
   data: function data() {
@@ -163,10 +166,21 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
 
   },
   created: function created() {
-    this.newer = this.dateFormat(this.chapter[0].create_date) + ' ' + this.chapter[0].chapter_name;
+    var last = this.getLastedChapter();
+    this.newer = this.dateFormat(last.create_date) + ' ' + last.chapter_name;
   },
   methods: _objectSpread({},
   (0, _vuex.mapMutations)(['setTempData']), {
+    getLastedChapter: function getLastedChapter() {
+      var arr = undefined;
+      this.chapter.filter(function (it) {
+        if (arr == undefined) arr = it;
+        if (arr.chapter_order_num <= it.chapter_order_num) {
+          arr = it;
+        }
+      });
+      return arr;
+    },
     reverse: function reverse() {
       this.reversename = !this.reversename;
       this.$emit('reversechapter', {});
@@ -192,14 +206,16 @@ var _vuex = __webpack_require__(/*! vuex */ 16);function _objectSpread(target) {
       //add0()方法在后面定义
       return ret;
     },
-    goread: function goread(item) {
+    goread: function goread(item, index) {
+      var that = this;
+      // console.log(item)
       // 存储中转数据到vuex
       this.setTempData({
         'key': 'temp_read',
         data: item });
 
       uni.navigateTo({
-        url: '/pages/readcomic/readcomic' });
+        url: '/pages/readcomic/readcomic?id=' + that.comicID + '&chapter=' + item.chapter_order_num });
 
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

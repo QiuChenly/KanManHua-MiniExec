@@ -24,9 +24,4 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.content .nomore.data-v-59ce337c {
-  text-align: center;
-  padding: 35rpx 0;
-  font-size: 28rpx;
-}
 

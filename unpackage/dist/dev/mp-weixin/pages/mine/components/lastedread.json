@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "comicitem": "/pages/search/compontents/comicitem"
+    "comicitem": "/pages/search/compontents/comicitem",
+    "q-no-more": "/compontents/qNoMore"
   }
 }
