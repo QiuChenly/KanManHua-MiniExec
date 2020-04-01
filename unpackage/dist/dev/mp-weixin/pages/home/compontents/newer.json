@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "q-tab": "/compontents/qTab",
+    "ranklist": "/pages/home/compontents/child/ranklist"
+  }
 }

@@ -26,6 +26,11 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/usersetting/usersetting",
+			"style": {
+				"navigationBarTitleText": "用户设置"
+			}
 		}
 	],
 	"tabBar": {
@@ -71,6 +76,10 @@
 			"name": "阅读界面 debug", //模式名称
 			"path": "pages/comicDetails/comicDetails", //启动页面，必选
 			"query": "id=107327" //启动参数，在页面的onLoad函数里面得到
+		}, {
+			"name": "用户设置 debug", //模式名称
+			"path": "pages/usersetting/usersetting", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
 		}]
 	}
 }

@@ -1,0 +1,18 @@
+
+.swiper.data-v-d16956c4 {
+	height: auto;
+	width: 100%;
+	/* background-color: #007AFF; */
+}
+.mTab.data-v-d16956c4 {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 100;
+	/* opacity: .2; */
+	box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+	-webkit-transition: all .5s;
+	transition: all .5s;
+}
+

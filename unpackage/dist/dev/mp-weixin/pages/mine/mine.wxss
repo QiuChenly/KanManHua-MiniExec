@@ -92,4 +92,10 @@
 .swiper-box.data-v-ec30ebc6 {
 	width: 100%;
 }
+.barAvatar.data-v-ec30ebc6 {
+	border-radius: 100%;
+	height: 60rpx;
+	width: 60rpx;
+	box-shadow: 0 0 15rpx rgba(0, 0, 0, .4);
+}
 

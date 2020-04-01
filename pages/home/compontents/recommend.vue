@@ -4,8 +4,8 @@
 		<!-- @click="click_item(item)"  -->
 		<view class='item' v-for="(item,index) in getListAsTopic" :key="index">
 			<!-- banner -->
-			<banner :canScroll="canScroll" @bannerItemClick='bannerItemClick' v-if="item.ordernum == 448370" :list="getlist"></banner>
-			<comicmore :item="item" :viewmode='getViewDisplayType(item)' v-else-if="item.ordernum != '448370'" @comicClick='comicClick'>
+			<banner :canScroll="canScroll" @bannerItemClick='bannerItemClick' v-if="item.config.display_type == 73" :list="getlist"></banner>
+			<comicmore :item="item" :viewmode='getViewDisplayType(item)' v-else @comicClick='comicClick'>
 
 			</comicmore>
 		</view>
@@ -20,6 +20,9 @@
 	import banner from './child/banner.vue'
 	import comicmore from '../../comicDetails/compontents/comicmore.vue'
 	import qBottomTips from '../../../compontents/qBottomTips.vue'
+	import {
+		mapState
+	} from 'vuex';
 
 	export default {
 		components: {
@@ -42,17 +45,27 @@
 			}
 		},
 		mounted() {
-			api.getHomeData(this.currentWebPage, '132').then(res => {
+			api.getHomeData(this.currentWebPage, this.userInfo.sex).then(res => {
 				this.comicdata = res[1].data.data;
-				this.currentWebPage++;
 			})
 		},
+		watch: {
+			sexChange() {
+				api.getHomeData(this.currentWebPage, this.userInfo.sex).then(res => {
+					this.comicdata = res[1].data.data;
+				})
+			}
+		},
 		computed: {
+			...mapState(['userInfo']),
+			sexChange() {
+				return this.userInfo.sex
+			},
 			getlist: function() {
-				if (!this.comicdata.hasOwnProperty('book'))
+				if (!this.comicdata.hasOwnProperty('book') || this.comicdata.book.length <= 0)
 					return [];
 				let a = this.comicdata.book[0].comic_info;
-				let list = []
+				let list = [];
 				for (var item in a) {
 					list.push({
 						title: a[item].comic_name,
@@ -66,7 +79,7 @@
 			getListAsTopic() {
 				if (!this.comicdata.book) return [];
 				return this.comicdata.book.filter(item => {
-					if (item.ordernum != '13176' && item.ordernum != '38') {
+					if (item.config.display_type != 47 && item.config.display_type != 101) {
 						return item
 					}
 				})
@@ -91,20 +104,12 @@
 				})
 			},
 			getViewDisplayType(item) {
-				switch (item.ordernum) {
-					case 447676:
-					case 13445:
-					case 13424:
-					case 13409:
+				switch (item.config.display_type) {
+					case 26:
 						return 'square';
-					case 446900:
-					case 446146:
-					case 166:
+					case 24:
 						return 'trisection';
-					case 13401:
-					case 13416:
-					case 13354:
-					case 13430:
+					case 61:
 						return 'HeterotypicV1'; //异型版v1布局
 					default:
 						return 'default';

@@ -4,7 +4,8 @@
     "pages/search/search",
     "pages/mine/mine",
     "pages/readcomic/readcomic",
-    "pages/comicDetails/comicDetails"
+    "pages/comicDetails/comicDetails",
+    "pages/usersetting/usersetting"
   ],
   "subPackages": [],
   "window": {
@@ -38,5 +39,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap52.json"
+  "sitemapLocation": "sitemap42.json"
 }

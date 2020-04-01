@@ -5,14 +5,15 @@ const store = new vuex.Store({
 	state: {
 		recentRead: [],
 		myBookList: [],
-		temp: {}
+		temp: {},
+		userInfo: {}
 	},
 	mutations: {
 		/**
 		 * 初始化store数据
 		 * @param {Object} state 
 		 */
-		loadData(state) {
+		loadData(state, callback) {
 			uni.getStorage({
 				key: 'recentRead',
 				success: (res) => {
@@ -27,7 +28,49 @@ const store = new vuex.Store({
 					console.log("load myBookList succ")
 				},
 			})
+			uni.getStorage({
+				key: 'userInfo',
+				success: (res) => {
+					state.userInfo = res.data;
+					console.log("load userInfo succ")
+				},
+				fail() {
+					state.userInfo = {
+						sex: 132,
+					};
+					state.temp.firstLaunch = true;
+					callback();
+					uni.setStorage({
+						key: 'userInfo',
+						data: state.userInfo,
+						success() {
+							console.log('save userInfo success.');
+						}
+					});
+					console.log("load userInfo fail,auto set");
+				}
+			})
 		},
+
+		/**
+		 * 设置用户性别,根据性别切换主页显示数据
+		 * @param {Object} type 男1 女2
+		 */
+		setUserSexType(state, type) {
+			if (type === 1) {
+				state.userInfo.sex = 132;
+			} else {
+				state.userInfo.sex = 133;
+			}
+			uni.setStorage({
+				key: 'userInfo',
+				data: state.userInfo,
+				success() {
+					console.log('save userInfo success.')
+				}
+			})
+		},
+
 		/**
 		 * 检查是否存在于本地我的书架
 		 * @param {Object} state

@@ -49,6 +49,7 @@
     position: relative;
 }
 .content .bar-content .back.data-v-242e201a {
+      margin-left: 20rpx;
       height: 100%;
       display: -webkit-box;
       display: -webkit-flex;
@@ -58,7 +59,6 @@
               align-items: center;
 }
 .content .bar-content .back .back-image.data-v-242e201a {
-        margin-left: 10rpx;
         height: 65rpx;
         width: 35rpx;
 }

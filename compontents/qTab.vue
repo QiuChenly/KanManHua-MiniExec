@@ -1,9 +1,12 @@
 <template>
-	<div class="tab" :style="{
+	<div :class="[!allowWrap?'tab':'moreline-view']" :style="{
 		'align-content': type,
 		'background-color': bgColor,
 	}">
-		<view class="menu" @click="click(index)" v-for='(item,index) in list' :key='index'>
+		<view :style="{
+			'width':(linesize===-1)?'auto':'calc((100% - ('+(linesize+1)+' * 20rpx)) / '+linesize+')'
+		}"
+		 class="menu" @click="click(index)" v-for='(item,index) in list' :key='index'>
 			<span>{{item.title}}</span>
 			<div class='baseShow' :class="clazz" :style="{
 				'background-color':dotActiveColor,
@@ -21,6 +24,7 @@
 	 * :currentindex 双向绑定,需要提供一个值绑定index显示
 	 * :bgColor tab的默认背景颜色,demo中默认白色
 	 * :showType 指定下方指示条的展现形式,是点还是横线.
+	 * showType: normal line
 	 * 
 	 * 接受以下事件
 	 * @changeItem(index) 响应函数,接受点击后的index项目
@@ -41,6 +45,14 @@
 			},
 			'showType': {
 				default: 'normal'
+			},
+			// 是否允许超过最大宽度后自动换行显示
+			'allowWrap': {
+				default: false
+			},
+			//指定超过屏幕宽度的话一行显示几个条目,如果提供值为-1或不写则默认尽可能多的塞满屏幕.
+			'linesize': {
+				default: -1
 			}
 		},
 		data() {
@@ -84,8 +96,13 @@
 		flex-direction: column;
 		flex-wrap: wrap;
 		align-content: flex-start;
-		height: 100rpx;
 		overflow: scroll;
+		height: 100rpx;
+	}
+
+	.moreline-view {
+		display: flex;
+		flex-flow: row wrap;
 	}
 
 	.menu {
@@ -93,7 +110,8 @@
 		position: relative;
 		text-align: center;
 		line-height: 100rpx;
-		padding: 0 20rpx;
+		text-align: center;
+		padding: 0 0 0 20rpx;
 		font-size: 29rpx;
 		// background-color: #4CD964;
 	}
@@ -115,7 +133,7 @@
 	}
 
 	.line {
-		width: calc(100% - 40rpx);
+		width: calc(100% - 20rpx);
 		height: 8rpx;
 		position: absolute;
 		bottom: 15rpx;

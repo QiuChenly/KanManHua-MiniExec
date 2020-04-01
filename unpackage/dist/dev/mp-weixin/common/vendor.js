@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}
+Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {return;}var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}
 
 var _toString = Object.prototype.toString;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -241,9 +241,11 @@ var promiseInterceptor = {
 
 
 var SYNC_API_RE =
-/^\$|restoreGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
+/^\$|sendNativeEvent|restoreGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
 
 var CONTEXT_API_RE = /^create|Manager$/;
+
+var ASYNC_API = ['createBLEConnection'];
 
 var CALLBACK_API_RE = /^on/;
 
@@ -251,7 +253,7 @@ function isContextApi(name) {
   return CONTEXT_API_RE.test(name);
 }
 function isSyncApi(name) {
-  return SYNC_API_RE.test(name);
+  return SYNC_API_RE.test(name) && ASYNC_API.indexOf(name) === -1;
 }
 
 function isCallbackApi(name) {
@@ -276,6 +278,19 @@ function shouldPromise(name) {
   return true;
 }
 
+/* eslint-disable no-extend-native */
+if (!Promise.prototype.finally) {
+  Promise.prototype.finally = function (callback) {
+    var promise = this.constructor;
+    return this.then(
+    function (value) {return promise.resolve(callback()).then(function () {return value;});},
+    function (reason) {return promise.resolve(callback()).then(function () {
+        throw reason;
+      });});
+
+  };
+}
+
 function promisify(name, api) {
   if (!shouldPromise(name)) {
     return api;
@@ -289,18 +304,6 @@ function promisify(name, api) {
         success: resolve,
         fail: reject })].concat(
       params));
-      /* eslint-disable no-extend-native */
-      if (!Promise.prototype.finally) {
-        Promise.prototype.finally = function (callback) {
-          var promise = this.constructor;
-          return this.then(
-          function (value) {return promise.resolve(callback()).then(function () {return value;});},
-          function (reason) {return promise.resolve(callback()).then(function () {
-              throw reason;
-            });});
-
-        };
-      }
     })));
   };
 }
@@ -8514,7 +8517,7 @@ main();
 /*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, files, gitHead, homepage, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-26420200313001","_inBundle":false,"_integrity":"sha512-7dPuazTiDmUyRcw+WW+UlWGKH0eeCUB+p0P4pJVKEHjpdXnXgvDQCSdJk764NH99TfsUycnuxecP5oHckVa88g==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-26420200313001.tgz","_shasum":"a006e329e033cd412accfa635f8933dbb822a9c3","_spec":"@dcloudio/uni-stat@next","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"b1fdbafab5dd4673cff64188a5203d0c947e4f50","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-26420200313001"};
+module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-26820200330001","_inBundle":false,"_integrity":"sha512-Qzo5LcBl+abS7DvpyTXBYW2VVYHVcHBewduQecjn/gbzAn9e90aOVn02/2VZ82wV6TBiDXbGyloXojOY3InzWA==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-26820200330001.tgz","_shasum":"880c5c5a4920bb35e9cf691eeb7427a7bf67ffd7","_spec":"@dcloudio/uni-stat@next","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"57ef7f7b5b6164a74ec425ff12f9fe0a1147841a","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-26820200330001"};
 
 /***/ }),
 /* 7 */
@@ -8525,7 +8528,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationBarTitleText": "首页", "usingComponents": { "q-tab": "/compontents/qTab", "category": "/pages/home/compontents/category", "newer": "/pages/home/compontents/newer", "recommend": "/pages/home/compontents/recommend", "zhuanji": "/pages/home/compontents/zhuanji" }, "usingAutoImportComponents": {} }, "pages/search/search": { "navigationBarTitleText": "搜索", "usingComponents": { "hotsearch": "/pages/search/compontents/hotsearch", "search-list": "/pages/search/compontents/searchList", "q-loading": "/compontents/qLoading" }, "usingAutoImportComponents": {} }, "pages/mine/mine": { "navigationBarTitleText": "我的", "navigationStyle": "custom", "usingComponents": { "q-tab": "/compontents/qTab", "mybook": "/pages/mine/components/mybooklist", "recent": "/pages/mine/components/lastedread", "q-bar": "/compontents/qBar" }, "usingAutoImportComponents": {} }, "pages/readcomic/readcomic": { "navigationStyle": "custom", "usingComponents": { "q-bar": "/compontents/qBar", "q-image-loader": "/compontents/qImageLoader" }, "usingAutoImportComponents": {} }, "pages/comicDetails/comicDetails": { "navigationStyle": "custom", "usingComponents": { "q-bar": "/compontents/qBar", "q-tab": "/compontents/qTab", "q-bottom-tips": "/compontents/qBottomTips", "comicdesc": "/pages/comicDetails/compontents/comicdesc", "comicchapter": "/pages/comicDetails/compontents/comicchapter", "q-share": "/compontents/qShare", "comicmore": "/pages/comicDetails/compontents/comicmore" }, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/home": { "navigationBarTitleText": "首页" }, "pages/search/search": { "navigationBarTitleText": "搜索" }, "pages/mine/mine": { "navigationBarTitleText": "我的", "navigationStyle": "custom" }, "pages/readcomic/readcomic": { "navigationStyle": "custom" }, "pages/comicDetails/comicDetails": { "navigationStyle": "custom" }, "pages/usersetting/usersetting": { "navigationBarTitleText": "用户设置" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -8542,265 +8545,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 9 */,
 /* 10 */,
 /* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \**********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode, /* vue-cli only */
-  components, // fixed by xxxxxx auto components
-  renderjs // fixed by xxxxxx renderjs
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // fixed by xxxxxx auto components
-  if (components) {
-    options.components = Object.assign(components, options.components || {})
-  }
-  // fixed by xxxxxx renderjs
-  if (renderjs) {
-    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
-      this[renderjs.__module] = this
-    });
-    (options.mixins || (options.mixins = [])).push(renderjs)
-  }
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 15 */
-/*!**************************************************************************************!*\
-  !*** /Volumes/data/CodeRepository/MiniProgram_dongnizhaotu/KanManHua/store/store.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-_vue.default.use(_vuex.default);
-var store = new _vuex.default.Store({
-  state: {
-    recentRead: [],
-    myBookList: [],
-    temp: {} },
-
-  mutations: {
-    /**
-                * 初始化store数据
-                * @param {Object} state 
-                */
-    loadData: function loadData(state) {
-      uni.getStorage({
-        key: 'recentRead',
-        success: function success(res) {
-          state.recentRead = res.data;
-          console.log("load recentRead succ");
-        } });
-
-      uni.getStorage({
-        key: 'myBookList',
-        success: function success(res) {
-          state.myBookList = res.data;
-          console.log("load myBookList succ");
-        } });
-
-    },
-    /**
-        * 检查是否存在于本地我的书架
-        * @param {Object} state
-        * @param {Object} comicID 漫画ID
-        */
-    isAtLocalFavList: function isAtLocalFavList(state, comicID) {
-      var has = false;
-      state.myBookList.filter(function (it) {
-        if (it.comicID === comicID) {
-          has = true;
-        }
-      });
-      state.temp['isAtLocalFavList'] = has;
-    },
-    /**
-        * 添加最近阅读书籍
-        * @param {Object} bookMap 漫画对象
-        */
-    addRecentRead: function addRecentRead(state, bookMap) {
-      var arr = [];
-      arr.push(bookMap);
-      state.recentRead.filter(function (it) {
-        if (it.comicID === bookMap.comicID) {
-
-        } else arr.push(it);
-      });
-      state.recentRead = arr;
-      uni.setStorage({
-        key: 'recentRead',
-        data: state.recentRead,
-        success: function success() {
-          console.log('save recentRead success');
-        },
-        fail: function fail() {
-          console.log('save recentRead faild');
-        } });
-
-    },
-
-    removeFavBook: function removeFavBook(state, comicID) {
-      var arr = [];
-      arr = state.myBookList.filter(function (it) {
-        if (it.comicID === comicID) {} else {
-          return it;
-        }
-      });
-      state.myBookList = arr;
-      uni.setStorage({
-        key: 'myBookList',
-        data: arr,
-        success: function success() {
-          console.log('del myBookList success');
-        },
-        fail: function fail() {
-          console.log('del myBookList fail');
-        } });
-
-    },
-    /**
-        * 加入收藏
-        * @param {Object} comicInfo 漫画数据对象
-        */
-    addFavBook: function addFavBook(state, comicInfo) {
-      var arr = [];
-      arr.push(comicInfo);
-      state.myBookList.filter(function (it) {
-        if (it.comicID === comicInfo.comicID) {
-
-        } else arr.push(it);
-      });
-
-      state.myBookList = arr;
-      uni.setStorage({
-        key: 'myBookList',
-        data: arr,
-        success: function success() {
-          console.log('save myBookList success');
-        },
-        fail: function fail() {
-          console.log('save myBookList fail');
-        } });
-
-    },
-    /**
-        * 设置页面间数据传递临时数据,下次启动后丢失
-        * @param {Object} data
-        */
-    setTempData: function setTempData(state, data) {
-      state.temp[data.key] = data.data;
-      // console.log('临时存储', state.temp, data.data)
-    } } });var _default =
-
-
-
-store;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 16 */
+/* 12 */
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
@@ -9750,6 +9495,315 @@ var index_esm = {
 
 
 /***/ }),
+/* 13 */,
+/* 14 */,
+/* 15 */
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode, /* vue-cli only */
+  components, // fixed by xxxxxx auto components
+  renderjs // fixed by xxxxxx renderjs
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // fixed by xxxxxx auto components
+  if (components) {
+    if (!options.components) {
+      options.components = {}
+    }
+    var hasOwn = Object.prototype.hasOwnProperty
+    for (var name in components) {
+      if (hasOwn.call(components, name) && !hasOwn.call(options.components, name)) {
+        options.components[name] = components[name]
+      }
+    }
+  }
+  // fixed by xxxxxx renderjs
+  if (renderjs) {
+    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
+      this[renderjs.__module] = this
+    });
+    (options.mixins || (options.mixins = [])).push(renderjs)
+  }
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 16 */
+/*!**************************************************************************************!*\
+  !*** /Volumes/data/CodeRepository/MiniProgram_dongnizhaotu/KanManHua/store/store.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+_vue.default.use(_vuex.default);
+var store = new _vuex.default.Store({
+  state: {
+    recentRead: [],
+    myBookList: [],
+    temp: {},
+    userInfo: {} },
+
+  mutations: {
+    /**
+                * 初始化store数据
+                * @param {Object} state 
+                */
+    loadData: function loadData(state, callback) {
+      uni.getStorage({
+        key: 'recentRead',
+        success: function success(res) {
+          state.recentRead = res.data;
+          console.log("load recentRead succ");
+        } });
+
+      uni.getStorage({
+        key: 'myBookList',
+        success: function success(res) {
+          state.myBookList = res.data;
+          console.log("load myBookList succ");
+        } });
+
+      uni.getStorage({
+        key: 'userInfo',
+        success: function success(res) {
+          state.userInfo = res.data;
+          console.log("load userInfo succ");
+        },
+        fail: function fail() {
+          state.userInfo = {
+            sex: 132 };
+
+          state.temp.firstLaunch = true;
+          callback();
+          uni.setStorage({
+            key: 'userInfo',
+            data: state.userInfo,
+            success: function success() {
+              console.log('save userInfo success.');
+            } });
+
+          console.log("load userInfo fail,auto set");
+        } });
+
+    },
+
+    /**
+        * 设置用户性别,根据性别切换主页显示数据
+        * @param {Object} type 男1 女2
+        */
+    setUserSexType: function setUserSexType(state, type) {
+      if (type === 1) {
+        state.userInfo.sex = 132;
+      } else {
+        state.userInfo.sex = 133;
+      }
+      uni.setStorage({
+        key: 'userInfo',
+        data: state.userInfo,
+        success: function success() {
+          console.log('save userInfo success.');
+        } });
+
+    },
+
+    /**
+        * 检查是否存在于本地我的书架
+        * @param {Object} state
+        * @param {Object} comicID 漫画ID
+        */
+    isAtLocalFavList: function isAtLocalFavList(state, comicID) {
+      var has = false;
+      state.myBookList.filter(function (it) {
+        if (it.comicID === comicID) {
+          has = true;
+        }
+      });
+      state.temp['isAtLocalFavList'] = has;
+    },
+    /**
+        * 添加最近阅读书籍
+        * @param {Object} bookMap 漫画对象
+        */
+    addRecentRead: function addRecentRead(state, bookMap) {
+      var arr = [];
+      arr.push(bookMap);
+      state.recentRead.filter(function (it) {
+        if (it.comicID === bookMap.comicID) {
+
+        } else arr.push(it);
+      });
+      state.recentRead = arr;
+      uni.setStorage({
+        key: 'recentRead',
+        data: state.recentRead,
+        success: function success() {
+          console.log('save recentRead success');
+        },
+        fail: function fail() {
+          console.log('save recentRead faild');
+        } });
+
+    },
+
+    removeFavBook: function removeFavBook(state, comicID) {
+      var arr = [];
+      arr = state.myBookList.filter(function (it) {
+        if (it.comicID === comicID) {} else {
+          return it;
+        }
+      });
+      state.myBookList = arr;
+      uni.setStorage({
+        key: 'myBookList',
+        data: arr,
+        success: function success() {
+          console.log('del myBookList success');
+        },
+        fail: function fail() {
+          console.log('del myBookList fail');
+        } });
+
+    },
+    /**
+        * 加入收藏
+        * @param {Object} comicInfo 漫画数据对象
+        */
+    addFavBook: function addFavBook(state, comicInfo) {
+      var arr = [];
+      arr.push(comicInfo);
+      state.myBookList.filter(function (it) {
+        if (it.comicID === comicInfo.comicID) {
+
+        } else arr.push(it);
+      });
+
+      state.myBookList = arr;
+      uni.setStorage({
+        key: 'myBookList',
+        data: arr,
+        success: function success() {
+          console.log('save myBookList success');
+        },
+        fail: function fail() {
+          console.log('save myBookList fail');
+        } });
+
+    },
+    /**
+        * 设置页面间数据传递临时数据,下次启动后丢失
+        * @param {Object} data
+        */
+    setTempData: function setTempData(state, data) {
+      state.temp[data.key] = data.data;
+      // console.log('临时存储', state.temp, data.data)
+    } } });var _default =
+
+
+
+store;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
 /* 17 */,
 /* 18 */,
 /* 19 */,
@@ -9847,6 +9901,22 @@ api.getBookByComicIDNew = function (id) {
     return res[1].data;
   });
 };
+
+/**
+    * 获取排名
+    * @param {rankType} 区分是哪种排行榜  
+    * @param {time} 区分是哪天的排行 2020-04-01
+    */
+api.getRankList = function (rankType, time) {
+  var u =
+  'https://rankdata-globalapi.321mh.com/app_api/v1/comic/getRankDataDetials?platform=6&productname=kmh&platformname=weixin_applet&client-type=weixin_applet&client-channel=tencent&client-version=3.2.4&rank_type=heat&sort_type=' +
+  rankType + '&time_type=day&variable_time=custom&query_time=' +
+  time;
+  return req(u, '').then(function (res) {
+    return res[1].data;
+  });
+};
+
 
 // 核心Request请求
 

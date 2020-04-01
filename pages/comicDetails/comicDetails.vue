@@ -39,9 +39,13 @@
 					</text>
 				</div>
 				<div>
+					<!-- (TMD用亿做单位你也太夸张了吧??) -->
 					<text :style="{
 						'font-size': '25rpx',
-					}">人气:{{(comicdata.renqi / 100000000).toFixed(2)}}亿</text>
+						'background-color':'rgba(0,0,0,0.5)',
+						'border-radius':'10rpx',
+						'padding':'5rpx 20rpx'
+					}">人气:{{(comicdata.renqi / 100000).toFixed(0)}} (TMD用亿做单位你也太夸张了吧??)</text>
 				</div>
 			</view>
 			<!-- 分享组件 -->

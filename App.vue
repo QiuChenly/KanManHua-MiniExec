@@ -1,8 +1,12 @@
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			this.$store.commit('loadData');
+
 			// 初始化本地存储数据
 		},
 		onShow: function() {
@@ -54,8 +58,25 @@
 			// uni.setStorageSync('SET_SYSTEM_INFO', JSON.stringify(e))
 
 			console.log('App Show')
-		},
 
+
+
+			this.loadData(function() {
+				console.log('first')
+				uni.navigateTo({
+					url: '/pages/usersetting/usersetting?type=1',
+					success() {
+						console.log('first succ')
+					},
+					fail(e) {
+						console.log('first fail', e)
+					}
+				})
+			});
+		},
+		methods: {
+			...mapMutations(['loadData'])
+		},
 		onHide: function() {
 			console.log('App Hide')
 		}

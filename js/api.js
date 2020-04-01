@@ -74,6 +74,22 @@ api.getBookByComicIDNew = (id) => {
 	})
 }
 
+/**
+ * 获取排名
+ * @param {rankType} 区分是哪种排行榜  
+ * @param {time} 区分是哪天的排行 2020-04-01
+ */
+api.getRankList = (rankType, time) => {
+	let u =
+		'https://rankdata-globalapi.321mh.com/app_api/v1/comic/getRankDataDetials?platform=6&productname=kmh&platformname=weixin_applet&client-type=weixin_applet&client-channel=tencent&client-version=3.2.4&rank_type=heat&sort_type=' +
+		rankType + '&time_type=day&variable_time=custom&query_time=' +
+		time;
+	return req(u, '').then(res => {
+		return res[1].data;
+	})
+}
+
+
 // 核心Request请求
 
 let req = (url, data) => {

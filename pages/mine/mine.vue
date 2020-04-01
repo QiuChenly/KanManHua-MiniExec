@@ -1,6 +1,11 @@
 <template>
 	<view class="content">
-		<qBar class="bar" :barTit="userProfile.nick" :letTitleCallByScroll="true" :showBackBtn="false"></qBar>
+		<qBar class="bar" :barTit="userProfile.nick" :letCustomSlotCallByScroll="true" :letTitleCallByScroll="true"
+		 :showBackBtn="true">
+			<view slot='pLeft' @click="openSet">
+				<image class="barAvatar" :src="userProfile.avatar" mode="aspectFit"></image>
+			</view>
+		</qBar>
 		<div class="head">
 			<!-- 225rpx 本来是 200rpx的 但是为了实现下方圆角透视效果就多增了25 -->
 			<div :style="{
@@ -83,6 +88,12 @@
 
 		},
 		methods: {
+			openSet() {
+				// console.log('openset')
+				uni.navigateTo({
+					url:'../usersetting/usersetting'
+				})
+			},
 			changeItem(index) {
 				this.currentindex = index;
 			},
@@ -210,5 +221,12 @@
 
 	.swiper-box {
 		width: 100%;
+	}
+
+	.barAvatar {
+		border-radius: 100%;
+		height: 60rpx;
+		width: 60rpx;
+		box-shadow: 0 0 15rpx rgba(0, 0, 0, .4);
 	}
 </style>

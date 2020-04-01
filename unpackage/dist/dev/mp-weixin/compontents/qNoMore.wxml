@@ -1,1 +1,1 @@
-<view class="nomore data-v-45f68eff"><block wx:if="{{!hasMore}}"><label class="_span data-v-45f68eff">😢~没有更多🌶</label></block><block wx:else><label class="_span data-v-45f68eff">😁~别叫🌶!正在加载...</label></block></view>
+<view class="nomore data-v-45f68eff"><block wx:if="{{!hasMore}}"><label class="_span data-v-45f68eff">😢~没有更多🌶!</label></block><block wx:else><label class="_span data-v-45f68eff">😁~别叫🌶!正在加载...</label></block></view>

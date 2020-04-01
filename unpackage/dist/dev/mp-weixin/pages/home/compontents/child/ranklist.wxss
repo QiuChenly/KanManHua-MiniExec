@@ -1,0 +1,17 @@
+
+.content.data-v-c5534748 {
+	height: 100%;
+	width: 100%;
+}
+.top.data-v-c5534748 {
+	height: 40rpx;
+	background-color: rgba(0, 0, 0, .08);
+	padding: 20rpx 0;
+	text-align: center;
+	color: rgba(0, 0, 0, .6);
+	font-size: 25rpx;
+}
+.bottom.data-v-c5534748 {
+	height: 20rpx;
+}
+

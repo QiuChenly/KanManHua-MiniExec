@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "q-loading": "/compontents/qLoading",
+    "q-no-more": "/compontents/qNoMore",
+    "comicitem": "/pages/search/compontents/comicitem"
+  }
+}

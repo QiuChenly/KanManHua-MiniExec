@@ -36,14 +36,24 @@
           flex-wrap: wrap;
   -webkit-align-content: flex-start;
           align-content: flex-start;
-  height: 100rpx;
   overflow: scroll;
+  height: 100rpx;
+}
+.moreline-view.data-v-49065ac8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 .menu.data-v-49065ac8 {
   position: relative;
   text-align: center;
   line-height: 100rpx;
-  padding: 0 20rpx;
+  text-align: center;
+  padding: 0 0 0 20rpx;
   font-size: 29rpx;
 }
 .baseShow.data-v-49065ac8 {
@@ -63,7 +73,7 @@
   height: 12rpx;
 }
 .line.data-v-49065ac8 {
-  width: calc(100% - 40rpx);
+  width: calc(100% - 20rpx);
   height: 8rpx;
   position: absolute;
   bottom: 15rpx;

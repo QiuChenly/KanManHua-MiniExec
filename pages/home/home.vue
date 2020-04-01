@@ -6,10 +6,10 @@
 				<recommend></recommend>
 			</swiper-item>
 			<swiper-item>
-				<view class="swiper-item">排行界面</view>
+				<newer></newer>
 			</swiper-item>
 			<swiper-item>
-				<view class="swiper-item">分类界面</view>
+				<category></category>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -20,7 +20,6 @@
 	import category from "./compontents/category.vue";
 	import newer from "./compontents/newer.vue";
 	import recommend from "./compontents/recommend.vue";
-	import zhuanji from "./compontents/zhuanji.vue";
 
 	export default {
 		data() {
@@ -52,7 +51,6 @@
 			category,
 			newer,
 			recommend,
-			zhuanji
 		}
 	};
 </script>

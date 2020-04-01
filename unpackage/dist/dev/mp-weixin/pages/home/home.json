@@ -4,7 +4,6 @@
     "q-tab": "/compontents/qTab",
     "category": "/pages/home/compontents/category",
     "newer": "/pages/home/compontents/newer",
-    "recommend": "/pages/home/compontents/recommend",
-    "zhuanji": "/pages/home/compontents/zhuanji"
+    "recommend": "/pages/home/compontents/recommend"
   }
 }
