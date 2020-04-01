@@ -45,16 +45,17 @@
 <style scoped>
 	.content {
 		background-color: rgba(0, 0, 0, .08);
-		height: 100vh;
+		height: 100%;
+		width: 100%;
 		padding-top: 20rpx;
 	}
 
 	.sex {
-		padding: 10rpx 20rpx;
-		font-size: 26rpx;
+		padding: 20rpx;
+		font-size: 28rpx;
 		height: 45rpx;
 		line-height: 45rpx;
-		width: 100%;
+		width: calc(100%-40rpx);
 		background-color: white;
 		margin-bottom: 20rpx;
 	}

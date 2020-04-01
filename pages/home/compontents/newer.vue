@@ -104,6 +104,7 @@
 			},
 			changeItemSwiper(e) {
 				this.currentindex = e.detail.current;
+				this.lastPoint = 0;//有时候用户会再上一个页面把tab拉到隐藏,这样就导致直接右滑下一个页面的时候tab不显示导致上面一大片空白,这里直接做swiper的监听让top为0强制显示出来
 			}
 		}
 
