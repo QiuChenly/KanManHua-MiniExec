@@ -89,6 +89,34 @@ api.getRankList = (rankType, time) => {
 	})
 }
 
+/**
+ * 获取全部分类的标记
+ */
+api.getCategoryTab = () => {
+	let u =
+		'https://xcxapi.kanman.com/api/v2/classify/?platform=6&productname=kmh&platformname=weixin_applet&client-type=weixin_applet&client-channel=tencent&client-version=3.2.4';
+	return req(u, '').then(res => {
+		return res[1].data;
+	})
+}
+
+/**
+ * 根据条件获取页面数据
+ * @param {pageno} 页面数量index
+ * @param {sortby} 获取数据的条件  :total_view_num=人气 :update_time=更新时间
+ * pay_type=1
+ * cartoon_status_id=1
+ * tag=rexue
+ */
+api.getCategoryByCondition = (pageno, sortby = 'total_view_num') => {
+	let u =
+		'https://xcxweb.kanman.com/wechat/api/query.do?platform=6&productname=kmh&platformname=weixin_applet&client-type=weixin_applet&client-channel=tencent&client-version=3.2.4&pageno=' +
+		pageno + '&pagesize=10&sortby=' + sortby;
+	return req(u, '').then(res => {
+		return res[1].data
+	})
+}
+
 
 // 核心Request请求
 

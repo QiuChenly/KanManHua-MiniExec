@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -140,10 +140,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
  * :currentindex 双向绑定,需要提供一个值绑定index显示
  * :bgColor tab的默认背景颜色,demo中默认白色
  * :showType 指定下方指示条的展现形式,是点还是横线.
- * showType: normal line
+ * showType取值: normal line dot border
  * 
  * 接受以下事件
- * @changeItem(index) 响应函数,接受点击后的index项目
+ * @changeItem(index,mid) 响应函数,接受点击后的index项目,mid标识id
+ * @NativeRect(rect) 本函数用于获取实际tab的宽高,用来实现动态高度设置
  */var _default =
 {
   props: {
@@ -168,13 +169,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
     //指定超过屏幕宽度的话一行显示几个条目,如果提供值为-1或不写则默认尽可能多的塞满屏幕.
     'linesize': {
-      default: -1 } },
+      default: -1 },
+
+    'mid': {
+      default: 'defaultTag' } },
 
 
   data: function data() {
     return {
       type: 'center',
-      clazz: 'dot' };
+      clazz: 'dot',
+      clazz_: '' };
 
   },
   created: function created() {
@@ -188,19 +193,32 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       case 'line':
         this.clazz = 'line';
         break;
+      case 'border':
+        this.clazz = '';
+        this.clazz_ = 'borders';
+        break;
       default:
         this.clazz = 'dot';
         break;}
 
     // console.log(this.showType, this.clazz)
   },
+  mounted: function mounted() {var _this = this;
+    setTimeout(function () {
+      uni.createSelectorQuery().in(_this).select('#nHeight').boundingClientRect(function (res) {
+        // console.log('qtab-res',res)
+        _this.$emit('NativeRect', res);
+      }).exec();
+    }, 1000);
+  },
   methods: {
     click: function click(index) {
-      this.$emit('changeItem', index);
+      this.$emit('changeItem', index, this.mid);
       // console.log(index)
     } },
 
   components: {} };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

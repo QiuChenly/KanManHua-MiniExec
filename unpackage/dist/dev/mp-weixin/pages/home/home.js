@@ -142,7 +142,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var qTab = function qTab() {__webpack_require__.e(/*! require.ensure | compontents/qTab */ "compontents/qTab").then((function () {return resolve(__webpack_require__(/*! ../../compontents/qTab.vue */ 67));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var category = function category() {__webpack_require__.e(/*! require.ensure | pages/home/compontents/category */ "pages/home/compontents/category").then((function () {return resolve(__webpack_require__(/*! ./compontents/category.vue */ 74));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var newer = function newer() {__webpack_require__.e(/*! require.ensure | pages/home/compontents/newer */ "pages/home/compontents/newer").then((function () {return resolve(__webpack_require__(/*! ./compontents/newer.vue */ 79));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommend = function recommend() {Promise.all(/*! require.ensure | pages/home/compontents/recommend */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/home/compontents/recommend")]).then((function () {return resolve(__webpack_require__(/*! ./compontents/recommend.vue */ 86));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var qTab = function qTab() {__webpack_require__.e(/*! require.ensure | compontents/qTab */ "compontents/qTab").then((function () {return resolve(__webpack_require__(/*! ../../compontents/qTab.vue */ 67));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var category = function category() {Promise.all(/*! require.ensure | pages/home/compontents/category */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/home/compontents/category")]).then((function () {return resolve(__webpack_require__(/*! ./compontents/category.vue */ 74));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var newer = function newer() {__webpack_require__.e(/*! require.ensure | pages/home/compontents/newer */ "pages/home/compontents/newer").then((function () {return resolve(__webpack_require__(/*! ./compontents/newer.vue */ 81));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var recommend = function recommend() {Promise.all(/*! require.ensure | pages/home/compontents/recommend */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/home/compontents/recommend")]).then((function () {return resolve(__webpack_require__(/*! ./compontents/recommend.vue */ 88));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -179,7 +179,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         title: "分类" }],
 
 
-      currentIndex: 0 };
+      currentIndex: 2 };
 
   },
   methods: {

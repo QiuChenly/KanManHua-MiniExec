@@ -35,7 +35,7 @@
 						title: "分类"
 					}
 				],
-				currentIndex: 0
+				currentIndex: 2
 			};
 		},
 		methods: {

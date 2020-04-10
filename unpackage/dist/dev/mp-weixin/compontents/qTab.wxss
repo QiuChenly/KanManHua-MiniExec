@@ -67,6 +67,7 @@
 .dot.data-v-49065ac8 {
   position: absolute;
   left: 50%;
+  margin-left: 10rpx;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 12rpx;
@@ -77,5 +78,16 @@
   height: 8rpx;
   position: absolute;
   bottom: 15rpx;
+}
+.borders.data-v-49065ac8 {
+  border-radius: 100rpx;
+  padding: 0 20rpx;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+.border-select.data-v-49065ac8 {
+  border: 2px solid #007AFF;
+  color: #fff;
+  background-color: #007AFF;
 }
 

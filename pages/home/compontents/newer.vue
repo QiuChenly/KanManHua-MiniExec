@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<qTab class='mTab' :linesize='5' :allowWrap='true' :list='tablist' :currentindex='currentindex' :showType='"line"'
+		<qTab class='mTab' :allowWrap='true' :list='tablist' :currentindex='currentindex' :showType='"line"'
 		 :style="{
 			'top':'-' + (lastPoint*2) + 'rpx',
 		}" @changeItem='changeItem'></qTab>

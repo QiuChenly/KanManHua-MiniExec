@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
-  "component": true
+  "component": true,
+  "usingComponents": {
+    "q-tab": "/compontents/qTab",
+    "comicitem": "/pages/search/compontents/comicitem",
+    "q-loading": "/compontents/qLoading"
+  }
 }
